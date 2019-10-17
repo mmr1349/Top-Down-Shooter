@@ -10,7 +10,8 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();    
+        rBody = GetComponent<Rigidbody>(); 
+        rBody.velocity = Vector3.zero;
     }
 
     public void Move(float x, float y) {
