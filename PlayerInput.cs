@@ -14,11 +14,11 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movement.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 mouse = Input.mousePosition;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
-            movement.LookPosition(hit.point);
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(mouse), out hit)) {
+            movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
-        
     }
 }

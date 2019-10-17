@@ -17,13 +17,11 @@ public class Movement : MonoBehaviour
         rBody.velocity = new Vector3(x, 0, y) * movementSpeed;
     }
 
-    public void LookDirection(Vector3 direction) {
-        transform.LookAt(direction);
+    public void LookPosition(Vector3 position) {
+        transform.LookAt(position);
     }
 
-    public void LookPosition(Vector3 position) {
-        Vector3 direction = Vector3.Normalize(transform.position - position);
-        //transform.rotation = Quaternion.Euler(0, Mathf.Atan2(), 0);
-        transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Vector3.up);
+    public void LookDirection(Vector3 direction) {
+        transform.forward = direction;
     }
 }
