@@ -23,5 +23,9 @@ public abstract class Projectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public float GetDamage() {
+        return damage;
+    }
+
     public abstract void OnCollisionEnter(Collision collision);
 }
