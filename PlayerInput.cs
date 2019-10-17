@@ -19,9 +19,9 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         movement.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 mouse = Input.mousePosition;
+        Vector3 mousePosition = Input.mousePosition;
         RaycastHit hit;
-        if (Physics.Raycast(main.ScreenPointToRay(mouse), out hit)) {
+        if (Physics.Raycast(main.ScreenPointToRay(mousePosition), out hit)) {
             movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
 
