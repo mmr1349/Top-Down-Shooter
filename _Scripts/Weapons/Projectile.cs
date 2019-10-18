@@ -29,6 +29,11 @@ namespace Weapons
             return damage;
         }
 
+        public float GetMovementSpeed() {
+            return movementSpeed;
+        }
+
         public abstract void OnCollisionEnter(Collision collision);
     }
+
 }
