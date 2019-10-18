@@ -46,6 +46,16 @@ namespace Player
                 
             }
             movement.Move(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                movement.Dash(Vector3.left);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                movement.Dash(Vector3.right);
+            }
         }
     }
 

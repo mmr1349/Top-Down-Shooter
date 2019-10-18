@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d561813bd1d440c8db4121fd05d0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 0}
+  objectToFollow: {fileID: 1161184484}
   offset: {x: 0, y: 10, z: -5}
 --- !u!1 &1161184484
 GameObject:
@@ -546,6 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  jumpHeight: 25
 --- !u!54 &1161184487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -651,7 +652,7 @@ GameObject:
   - component: {fileID: 1830185006}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

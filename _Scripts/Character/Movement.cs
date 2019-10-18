@@ -10,7 +10,7 @@ namespace Character
         [SerializeField] private float movementSpeed;
         [SerializeField] private float jumpHeight;
         private Rigidbody rBody;
-        private Collider collider;
+        //private Collider collider;
 
         private bool canJump = true;
 
@@ -20,7 +20,7 @@ namespace Character
             rBody = GetComponent<Rigidbody>(); 
             rBody.velocity = Vector3.zero;
 
-            collider = GetComponent<Collider>();
+            //collider = GetComponent<Collider>();
         }
 
         public void Move(float x, float y)
@@ -50,6 +50,12 @@ namespace Character
             }
         }
 
+        public void Dash(Vector3 direction)
+        {
+            //rBody.velocity = movementSpeed * 2 * direction;
+            transform.Translate(direction * (movementSpeed / 2));
+        }
+        
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.tag.Equals("Floor") && !canJump)
