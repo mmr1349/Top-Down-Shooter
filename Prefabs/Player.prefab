@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 8159705858204862098}
   - component: {fileID: 8159705858204862099}
   - component: {fileID: 8159705858204862096}
+  - component: {fileID: 6719982795177959171}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  jumpHeight: 0
 --- !u!114 &8159705858204862096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,3 +267,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a3e67a7f9272c44a80ed80effe3fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6719982795177959171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159705858204862097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498f9016047e48c0a5e5d3d4843693b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ee1931b8b17c141019e5aead5953776a, type: 2}
+  unityEventRespone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8159705858204862096}
+        m_MethodName: ToggleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Events.CustomEvents.VoidEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

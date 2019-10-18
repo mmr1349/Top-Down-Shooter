@@ -13,7 +13,7 @@ namespace Player
         private Camera main;
         private Weapon wep;
 
-
+        private bool allowMovement = true;
         // Start is called before the first frame update
         void Start()
         {
@@ -31,7 +31,7 @@ namespace Player
                 movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
             }
             
-            if(Input.GetMouseButtonDown(0)) {
+            if(Input.GetMouseButtonDown(0) && allowMovement) {
                 wep.Attack();
             }
             
@@ -39,6 +39,10 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!allowMovement)
+            {
+                return;
+            }
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -56,6 +60,11 @@ namespace Player
             {
                 movement.Dash(Vector3.right);
             }
+        }
+
+        public void ToggleMovement()
+        {
+            allowMovement = !allowMovement;
         }
     }
 

@@ -53,7 +53,7 @@ namespace Character
         public void Dash(Vector3 direction)
         {
             //rBody.velocity = movementSpeed * 2 * direction;
-            transform.Translate(direction * (movementSpeed / 2));
+            rBody.velocity = (direction * (movementSpeed));
         }
         
         private void OnCollisionEnter(Collision other)
