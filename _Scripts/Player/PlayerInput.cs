@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Character;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Player
         private Movement movement;
         private Camera main;
         private Weapon wep;
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -22,16 +25,27 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            movement.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector3 mouse = Input.mousePosition;
             RaycastHit hit;
             if (Physics.Raycast(main.ScreenPointToRay(mouse), out hit)) {
                 movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
             }
-
+            
             if(Input.GetMouseButtonDown(0)) {
                 wep.Attack();
             }
+            
+        }
+
+        private void FixedUpdate()
+        {
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                movement.Jump();
+                
+            }
+            movement.Move(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         }
     }
 
