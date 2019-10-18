@@ -125,4 +125,4 @@ MonoBehaviour:
   movementSpeed: 100
   damage: 10
   owner: {fileID: 0}
-  lifetime: 100
+  lifetime: 1
