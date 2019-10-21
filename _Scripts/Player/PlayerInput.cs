@@ -14,6 +14,8 @@ namespace Player
         private Weapon wep;
 
         private bool allowMovement = true;
+
+        private bool canInteract = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -34,21 +36,23 @@ namespace Player
             if(Input.GetMouseButtonDown(0) && allowMovement) {
                 wep.Attack();
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.F) && canInteract)
+            {
+                allowMovement = false;
+            }
         }
 
         private void FixedUpdate()
         {
-            if (!allowMovement)
-            {
-                return;
-            }
+            if (!allowMovement) return;
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 movement.Jump();
                 
             }
+            
             movement.Move(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
 
             if (Input.GetKeyDown(KeyCode.Q))
@@ -65,6 +69,11 @@ namespace Player
         public void ToggleMovement()
         {
             allowMovement = !allowMovement;
+        }
+
+        public void SetCanInteract(bool val)
+        {
+            canInteract = val;
         }
     }
 

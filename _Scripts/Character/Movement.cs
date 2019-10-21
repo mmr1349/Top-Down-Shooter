@@ -10,7 +10,7 @@ namespace Character
         [SerializeField] private float movementSpeed;
         [SerializeField] private float jumpHeight;
         private Rigidbody rBody;
-        //private Collider collider;
+        //private Collider collider;    
 
         private bool canJump = true;
 
