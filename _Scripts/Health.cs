@@ -20,4 +20,12 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public float GetHealth() {
+        return health;
+    }
+
+    public float GetMaxHealth() {
+        return maxHealth;
+    }
 }

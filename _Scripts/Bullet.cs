@@ -29,6 +29,6 @@ public class Bullet : Projectile
     }
 
     private void FixedUpdate() {
-        CheckAhead();
+        //CheckAhead();
     }
 }

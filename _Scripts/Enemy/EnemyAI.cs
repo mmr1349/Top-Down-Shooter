@@ -84,4 +84,10 @@ public class EnemyAI : MonoBehaviour
             myState = EnemyState.ALERTED;
         }
     }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            myState = EnemyState.SUSPICIOUS;
+        }
+    }
 }
