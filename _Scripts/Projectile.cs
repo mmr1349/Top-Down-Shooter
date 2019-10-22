@@ -31,5 +31,5 @@ public abstract class Projectile : MonoBehaviour
         return movementSpeed;
     }
 
-    public abstract void OnCollisionEnter(Collision collision);
+    public abstract void OnTriggerEnter(Collider other);
 }

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  coolDownTime: 0.1
+  coolDownTime: 1
   projectilePrefab: {fileID: 3505989657370639155, guid: 6ec9f78977eccbd41971854d05017fb1,
     type: 3}
   projectileSpawnLocation: {fileID: 6784279612714927521}
