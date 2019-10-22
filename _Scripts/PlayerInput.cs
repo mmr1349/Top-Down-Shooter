@@ -8,12 +8,14 @@ public class PlayerInput : MonoBehaviour
     private Camera main;
     private Weapon wep;
     private Plane raycastPlane;
+    private EquippedItemManager itemManager;
     // Start is called before the first frame update
     void Start() {
         wep = GetComponentInChildren<Weapon>();
         main = Camera.main;
         movement = GetComponent<Movement>();
         raycastPlane = new Plane(Vector3.up, 0f);
+        itemManager = GetComponent<EquippedItemManager>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,10 @@ public class PlayerInput : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0)) {
             wep.Attack();
+        } if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+            wep = itemManager.EnableWeaponUp();
+        } else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+            wep = itemManager.EnableWeaponDown();
         }
     }
 }
