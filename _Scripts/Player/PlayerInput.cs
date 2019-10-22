@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Character;
+using Events.EventObjects;
 using UnityEngine;
 using Weapons;
 
@@ -9,12 +10,14 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
+        [SerializeField] private VoidEventObject startInteraction;
+        
         private Movement movement;
         private Camera main;
         private Weapon wep;
 
         private bool allowMovement = true;
-
+        
         private bool canInteract = false;
         // Start is called before the first frame update
         void Start()
@@ -39,8 +42,14 @@ namespace Player
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)
             {
-                allowMovement = false;
+                allowMovement = !allowMovement;
+                if (!allowMovement)
+                {
+                    startInteraction.Raise();    
+                }
+                
             }
+            
         }
 
         private void FixedUpdate()
