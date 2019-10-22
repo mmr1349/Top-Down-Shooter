@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &836461593
 Transform:
   m_ObjectHideFlags: 0
@@ -57,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836461592}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.338, z: 1.01}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.338, z: 0.912}
+  m_LocalScale: {x: 0.1, y: 0.5, z: 0.1}
   m_Children:
   - {fileID: 680532304}
   m_Father: {fileID: 8159705858204862110}
@@ -124,8 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack: 1
   coolDownTime: 0
-  projectilePrefab: {fileID: 0}
-  projectileSpawnLocation: {fileID: 0}
+  projectilePrefab: {fileID: 2036338478516805487, guid: 03961f60628d04f43a973326a998bb42,
+    type: 3}
+  projectileSpawnLocation: {fileID: 680532304}
 --- !u!1 &8159705858204862097
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6784279610948392324, guid: bc9bd1df6f181b446be169b1cb737522,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6784279610948392325, guid: bc9bd1df6f181b446be169b1cb737522,
         type: 3}
