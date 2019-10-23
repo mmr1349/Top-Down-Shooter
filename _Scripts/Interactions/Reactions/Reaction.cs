@@ -5,33 +5,32 @@ using UnityEngine;
 namespace Interactions.Reactions
 {
     
-    public abstract class Reaction<T> : MonoBehaviour
+    public abstract class Reaction : ScriptableObject
     {
-        [SerializeField] private List<T> reactionItems;
+        protected bool isRunning;
         public bool hasBeenPlayed;
-        private int index = 0;
 
-        public T getNextReaction()
+        public void Init()
         {
-            index++;
-            return reactionItems[index];
+            SpecificInit();
+        }
+        
+        
+        protected abstract void SpecificInit();
+        
+        public bool GetIsRunning()
+        {
+            return isRunning;
         }
 
-        public T getPreviousReactin()
+        public void React(MonoBehaviour monoBehaviour)
         {
-            index--;
-            return reactionItems[index];
+            ImmediateReaction();
         }
 
-        public bool tryNextReaction()
-        {
-            return index < reactionItems.Count;
-        }
+        protected abstract void ImmediateReaction();
 
-        public bool tryPreviousReaction()
-        {
-            return index >= 0;
-        }
+        public abstract bool NextStep();
     }
 
 }
