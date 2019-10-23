@@ -47,6 +47,6 @@ MonoBehaviour:
   description: Bullet you can shoot out of guns
   price: 5
   sprite: {fileID: 0}
-  amount: 500
+  amount: 999999
   projectilePrefab: {fileID: 3505989657370639155, guid: 6ec9f78977eccbd41971854d05017fb1,
     type: 3}
