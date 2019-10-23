@@ -20,7 +20,7 @@ namespace Items {
                     Debug.LogWarning(getItemName() + ": we are not equipped to an object with a health");
                 }
                 if (getAmount() <= 0) {
-                    Destroy(this);
+                    Destroy(this.gameObject);
                 }
             }
         }
