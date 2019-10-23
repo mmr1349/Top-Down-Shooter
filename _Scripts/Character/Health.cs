@@ -28,4 +28,11 @@ public class Health : MonoBehaviour
     public float GetMaxHealth() {
         return maxHealth;
     }
+
+    public void Heal(float amount) {
+        health += amount;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+    }
 }

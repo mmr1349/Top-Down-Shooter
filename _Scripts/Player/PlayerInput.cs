@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Items;
 
 public class PlayerInput : MonoBehaviour
 {
     private Movement movement;
     private Camera main;
-    private Weapon wep;
     private Plane raycastPlane;
     private EquippedItemManager itemManager;
     // Start is called before the first frame update
     void Start() {
-        wep = GetComponentInChildren<Weapon>();
         main = Camera.main;
         movement = GetComponent<Movement>();
         raycastPlane = new Plane(Vector3.up, 0f);
@@ -38,11 +37,11 @@ public class PlayerInput : MonoBehaviour
         }*/
 
         if(Input.GetMouseButtonDown(0)) {
-            wep.Attack();
+            itemManager.currentyEquipped().Use();
         } if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-            wep = itemManager.EnableWeaponUp();
+            itemManager.EnableUsableUp();
         } else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
-            wep = itemManager.EnableWeaponDown();
+            itemManager.EnableUsableDown();
         }
     }
 }

@@ -19,6 +19,6 @@ public class HealthBar : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         healthBar.value = health.GetHealth() / health.GetMaxHealth();
-        transform.LookAt(mainCamera.transform);
+        transform.LookAt(-mainCamera.transform.position);
     }
 }

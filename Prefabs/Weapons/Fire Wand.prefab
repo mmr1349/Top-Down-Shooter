@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3142914926051360488
+--- !u!1 &446628070165181061
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4064334357226857782}
+  - component: {fileID: 446628070165181060}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -16,21 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4064334357226857782
+--- !u!4 &446628070165181060
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3142914926051360488}
+  m_GameObject: {fileID: 446628070165181061}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 35110862782545787}
+  m_Father: {fileID: 446628070665475523}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &8843857248718511615
+--- !u!1 &446628070665475132
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,47 +38,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 35110862782545787}
-  - component: {fileID: 8864040680572198441}
-  - component: {fileID: 8508054625118411230}
-  - component: {fileID: 364957177789476762}
+  - component: {fileID: 446628070665475523}
+  - component: {fileID: 446628070665475520}
+  - component: {fileID: 446628070665475521}
+  - component: {fileID: 446628070665475522}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Fire Wand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &35110862782545787
+--- !u!4 &446628070665475523
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843857248718511615}
+  m_GameObject: {fileID: 446628070665475132}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.33, z: 0.8}
-  m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.338, z: 0.912}
+  m_LocalScale: {x: 0.1, y: 0.5, z: 0.1}
   m_Children:
-  - {fileID: 4064334357226857782}
+  - {fileID: 446628070165181060}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &8864040680572198441
+--- !u!33 &446628070665475520
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843857248718511615}
+  m_GameObject: {fileID: 446628070665475132}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8508054625118411230
+--- !u!23 &446628070665475521
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843857248718511615}
+  m_GameObject: {fileID: 446628070665475132}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -110,23 +110,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &364957177789476762
+--- !u!114 &446628070665475522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8843857248718511615}
+  m_GameObject: {fileID: 446628070665475132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbbcaff9392304479b0028b5812cbd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 35e31c038f9ff6240b9f818ba3ca89bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Gun
-  description: Shoots bullets to kill enemies
+  itemName: Flaming Staff
+  description: Shoots fireballs at your enemy
   price: 100
   sprite: {fileID: 0}
-  damageSpawnLocation: {fileID: 4064334357226857782}
-  coolDown: 0.1
+  damageSpawnLocation: {fileID: 446628070165181060}
+  coolDown: 0.5
   usable: 1
-  ammo: {fileID: 7286072238766377551, guid: 6cb928c85424556448ad40fd9405165c, type: 3}
+  manaCost: 10
+  projectile: {fileID: 2036338478516805487, guid: 03961f60628d04f43a973326a998bb42,
+    type: 3}

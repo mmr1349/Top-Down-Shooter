@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Items;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -67,7 +68,7 @@ public class EnemyAI : MonoBehaviour
                 navAgent.isStopped = true;
                 navAgent.ResetPath();
                 transform.LookAt(playerTransform);
-                myWeapon.Attack();
+                myWeapon.Use();
             } else {
                 navAgent.isStopped = false;
             }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class OldWeapon : MonoBehaviour
 {
     [SerializeField] private bool canAttack = true;
     [SerializeField] private float coolDownTime;

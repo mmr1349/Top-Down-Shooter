@@ -1,48 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Items;
 
 public class EquippedItemManager : MonoBehaviour
 {
-    [SerializeField] private List<Weapon> weaponList;
+    [SerializeField] private List<Usable> itemList;
     [SerializeField] private int currentIndex;
     // Start is called before the first frame update
     void Start() {
         currentIndex = 0;
-        weaponList = new List<Weapon>();
-        weaponList.AddRange(GetComponentsInChildren<Weapon>());
-        weaponList[currentIndex].gameObject.SetActive(true);
-        for (int i = 1; i < weaponList.Count; i++) {
-            weaponList[i].gameObject.SetActive(false);
+        itemList = new List<Usable>();
+        itemList.AddRange(GetComponentsInChildren<Usable>());
+        itemList[currentIndex].gameObject.SetActive(true);
+        for (int i = 1; i < itemList.Count; i++) {
+            itemList[i].gameObject.SetActive(false);
         }
     }
 
-    public Weapon EnableWeaponUp() {
-        weaponList[currentIndex].gameObject.SetActive(false);
+    public Usable currentyEquipped() {
+        return itemList[currentIndex];
+    }
+
+    public Usable EnableUsableUp() {
+        itemList[currentIndex].gameObject.SetActive(false);
         currentIndex++;
-        if (currentIndex >= weaponList.Count) {
+        if (currentIndex >= itemList.Count) {
             currentIndex = 0;
         }
-        weaponList[currentIndex].gameObject.SetActive(true);
-        return weaponList[currentIndex];
+        itemList[currentIndex].gameObject.SetActive(true);
+        return itemList[currentIndex];
     }
 
-    public Weapon EnableWeaponDown() {
-        weaponList[currentIndex].gameObject.SetActive(false);
+    public Usable EnableUsableDown() {
+        itemList[currentIndex].gameObject.SetActive(false);
         currentIndex--;
         if (currentIndex < 0) {
-            currentIndex = weaponList.Count-1;
+            currentIndex = itemList.Count-1;
         }
-        weaponList[currentIndex].gameObject.SetActive(true);
-        return weaponList[currentIndex];
+        itemList[currentIndex].gameObject.SetActive(true);
+        return itemList[currentIndex];
     }
 
-    public Weapon EnableWeaponIndex(int index) {
-        if (index > 0 && index < weaponList.Count) {
-            weaponList[currentIndex].gameObject.SetActive(false);
+    public Usable EnableUsableIndex(int index) {
+        if (index > 0 && index < itemList.Count) {
+            itemList[currentIndex].gameObject.SetActive(false);
             currentIndex = index;
-            weaponList[currentIndex].gameObject.SetActive(true);
+            itemList[currentIndex].gameObject.SetActive(true);
         }
-        return weaponList[currentIndex];
+        return itemList[currentIndex];
     }
 }
