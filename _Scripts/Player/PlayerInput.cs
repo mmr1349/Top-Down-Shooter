@@ -1,43 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
-using Character;
-using UnityEngine;
-using Weapons;
-
-namespace Player
-{
-    public class PlayerInput : MonoBehaviour
-    {
-        private Movement movement;
-        private Camera main;
-        private Weapon wep;
-        // Start is called before the first frame update
-        void Start()
-        {
-            wep = GetComponentInChildren<Weapon>();
-            main = Camera.main;
-            movement = GetComponent<Movement>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            movement.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            Vector3 mousePosition = Input.mousePosition;
-            RaycastHit hit;
-            if (Physics.Raycast(main.ScreenPointToRay(mousePosition), out hit)) {
-                movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-            }
-
-            if(Input.GetMouseButtonDown(0)) {
-                wep.Attack();
-            }
-        }
-    }
-
-}
-=======
 using UnityEngine;
 using Items;
 
@@ -74,13 +36,14 @@ public class PlayerInput : MonoBehaviour
             mousePosition.transform.position = hit.point;
         }*/
 
-        if(Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             itemManager.currentyEquipped().Use();
-        } if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
             itemManager.EnableUsableUp();
-        } else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
             itemManager.EnableUsableDown();
         }
     }
 }
->>>>>>> Marcus's-Branch
