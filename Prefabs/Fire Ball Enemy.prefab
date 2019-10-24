@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkRadius: 20
-  attackRange: 7
+  attackRange: 15
   patrolSpeed: 5
   alertSpeed: 9
 --- !u!195 &393134835
