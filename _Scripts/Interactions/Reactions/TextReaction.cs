@@ -4,7 +4,7 @@ using Interactions.Reactions;
 using TMPro;
 using UI;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Text reaction", menuName = "Scriptable Objects/Reactions")]
+[CreateAssetMenu(fileName = "New Text reaction", menuName = "ScriptableObjects/Reactions")]
 public class TextReaction : Reaction
 {
     [SerializeField] private List<string> sentences = new List<string>();
