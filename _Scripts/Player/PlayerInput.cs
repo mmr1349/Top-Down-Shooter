@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
@@ -11,33 +11,51 @@ namespace Player
     public class PlayerInput : MonoBehaviour
     {
         [SerializeField] private VoidEventObject startInteraction;
-        
+
         private Movement movement;
         private Camera main;
-        private Weapon wep;
+        private Plane raycastPlane;
+        private EquippedItemManager itemManager;
 
         private bool allowMovement = true;
-        
+
         private bool canInteract = false;
+
         // Start is called before the first frame update
         void Start()
         {
-            wep = GetComponentInChildren<Weapon>();
             main = Camera.main;
             movement = GetComponent<Movement>();
+            raycastPlane = new Plane(Vector3.up, 0f);
+            itemManager = GetComponent<EquippedItemManager>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            Vector3 mouse = Input.mousePosition;
             RaycastHit hit;
-            if (Physics.Raycast(main.ScreenPointToRay(mouse), out hit)) {
-                movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            Ray mouseRay = main.ScreenPointToRay(Input.mousePosition);
+            float enter;
+            //For plane casting
+            if (raycastPlane.Raycast(mouseRay, out enter))
+            {
+                Vector3 hitPoint = mouseRay.GetPoint(enter);
+                movement.LookPosition(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
             }
-            
-            if(Input.GetMouseButtonDown(0) && allowMovement) {
-                wep.Attack();
+
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                itemManager.currentyEquipped().Use();
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+            {
+                itemManager.EnableUsableUp();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+            {
+                itemManager.EnableUsableDown();
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)
@@ -45,24 +63,24 @@ namespace Player
                 allowMovement = !allowMovement;
                 if (!allowMovement)
                 {
-                    startInteraction.Raise();    
+                    startInteraction.Raise();
                 }
-                
+
             }
-            
+
         }
 
         private void FixedUpdate()
         {
             if (!allowMovement) return;
-            
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 movement.Jump();
-                
+
             }
-            
-            movement.Move(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+
+            movement.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -85,5 +103,4 @@ namespace Player
             canInteract = val;
         }
     }
-
 }

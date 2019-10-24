@@ -19,6 +19,22 @@ namespace Character
             health -= amount;
             if (health <= 0) {
                 Debug.Log("We have died.");
+                Destroy(this.gameObject);
+            }
+        }
+
+        public float GetHealth() {
+            return health;
+        }
+
+        public float GetMaxHealth() {
+            return maxHealth;
+        }
+
+        public void Heal(float amount) {
+            health += amount;
+            if (health > maxHealth) {
+                health = maxHealth;
             }
         }
     }
