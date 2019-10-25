@@ -29,8 +29,8 @@ namespace Character
             {
                 rBody.velocity = Vector3.zero;
             }*/
-            //rBody.velocity = new Vector3(x, 0, y) * movementSpeed;
-            rBody.AddForce(movementSpeed * Time.deltaTime * new Vector3(x, 0, y).normalized,ForceMode.Impulse);
+            rBody.velocity = new Vector3(x, 0, y) * movementSpeed;
+            //rBody.AddForce(movementSpeed * Time.deltaTime * new Vector3(x, 0, y).normalized,ForceMode.Impulse);
         }
 
         public void LookPosition(Vector3 position) {
