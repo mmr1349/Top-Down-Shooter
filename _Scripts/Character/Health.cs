@@ -2,37 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Character
 {
-
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth = 100;
-    // Start is called before the first frame update
-    void Start()
+    public class Health : MonoBehaviour
     {
-        health = maxHealth;
-    }
 
-    public void TakeDamage(float amount) {
-        health -= amount;
-        if (health <= 0) {
-            Debug.Log("We have died.");
-            Destroy(this.gameObject);
-        }
-    }
-
-    public float GetHealth() {
-        return health;
-    }
-
-    public float GetMaxHealth() {
-        return maxHealth;
-    }
-
-    public void Heal(float amount) {
-        health += amount;
-        if (health > maxHealth) {
+        [SerializeField] private float health;
+        [SerializeField] private float maxHealth = 100;
+        // Start is called before the first frame update
+        void Start()
+        {
             health = maxHealth;
         }
+
+        public void TakeDamage(float amount) {
+            health -= amount;
+            if (health <= 0) {
+                Debug.Log("We have died.");
+                Destroy(this.gameObject);
+            }
+        }
+
+        public float GetHealth() {
+            return health;
+        }
+
+        public float GetMaxHealth() {
+            return maxHealth;
+        }
+
+        public void Heal(float amount) {
+            health += amount;
+            if (health > maxHealth) {
+                health = maxHealth;
+            }
+        }
     }
+
 }

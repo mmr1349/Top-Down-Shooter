@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Movement : MonoBehaviour
-{
-    [SerializeField] private float movementSpeed;
-    private Rigidbody rBody;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rBody = GetComponent<Rigidbody>();    
-    }
-
-    public void Move(float x, float y) {
-        rBody.velocity = new Vector3(x, 0, y) * movementSpeed;
-    }
-
-    public void LookPosition(Vector3 position) {
-        transform.LookAt(position);
-    }
-
-    public void LookDirection(Vector3 direction) {
-        transform.forward = direction;
-    }
-=======
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,6 +29,7 @@ namespace Character
             {
                 rBody.velocity = Vector3.zero;
             }*/
+            //rBody.velocity = new Vector3(x, 0, y) * movementSpeed;
             rBody.AddForce(movementSpeed * Time.deltaTime * new Vector3(x, 0, y).normalized,ForceMode.Impulse);
         }
 
@@ -92,6 +65,4 @@ namespace Character
             }
         }
     }
-
->>>>>>> Ben's-Branch
 }
