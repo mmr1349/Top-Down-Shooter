@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using UnityEngine;
+using Character;
 
 namespace Items {
     public class HealthPotion : Consumable {
