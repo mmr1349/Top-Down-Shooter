@@ -54,6 +54,7 @@ public class Interactable : MonoBehaviour
         if (currentConditionIndex >= conditionCollections.Length)
         {
             reactionEventObject.Raise(defaultReaction);
+            Debug.Log("Playing Default Reaction");
         }
         else
         {
@@ -64,10 +65,11 @@ public class Interactable : MonoBehaviour
             else
             {
                 reactionEventObject.Raise(defaultReaction);
+                Debug.Log("Playing Default Reaction");
             }
         }
         
-        Debug.Log("Looking for interaction text");
+        
         
         
     }

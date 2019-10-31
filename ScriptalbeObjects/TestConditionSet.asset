@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df81ff437f554eb4a1088c6bf05e3336, type: 3}
-  m_Name: hasStarted
+  m_Script: {fileID: 11500000, guid: ed3978dc314ea48678f2a830095413e0, type: 3}
+  m_Name: TestConditionSet
   m_EditorClassIdentifier: 
-  description: hasStarted
-  satasfied: 1
+  conditions:
+  - {fileID: 11400000, guid: 81fdeb0f8db9e47c6b8559f9f51c4ca6, type: 2}
+  reactionCollection: {fileID: 11400000, guid: 344e67dcf0dde458a998f89a779cdea0, type: 2}
