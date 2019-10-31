@@ -43,6 +43,13 @@ namespace Player
                 movement.LookPosition(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
             }
 
+            //For raycasting
+            /*if (Physics.Raycast(mouseRay, out hit, 100f, mask)) {
+                Debug.Log("Collided with " + hit.transform.name + " at position " + hit.point);
+                movement.LookPosition(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+                mousePosition.transform.position = hit.point;
+            }*/
+
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -98,8 +105,7 @@ namespace Player
             allowMovement = !allowMovement;
         }
 
-        public void SetCanInteract(bool val)
-        {
+        public void SetCanInteract(bool val) {
             canInteract = val;
         }
     }

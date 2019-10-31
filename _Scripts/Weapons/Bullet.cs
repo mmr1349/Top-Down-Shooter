@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace Weapons
 {
-    public class Bullet : Projectile
-    {
-        public override void OnCollisionEnter(Collision collision) {
-            Debug.Log("Collided with " + collision.transform.name);
-            Health hp = collision.gameObject.GetComponent<Health>();
+    public class Bullet : Projectile {
+        public override void OnTriggerEnter(Collider other) {
+            Debug.Log("Collided with " + other.transform.name);
+            Health hp = other.gameObject.GetComponent<Health>();
             if (hp) {
                 hp.TakeDamage(this.GetDamage());
             }

@@ -29,6 +29,6 @@ namespace Weapons
             return damage;
         }
 
-        public abstract void OnCollisionEnter(Collision collision);
+        public abstract void OnTriggerEnter(Collider other);
     }
 }
