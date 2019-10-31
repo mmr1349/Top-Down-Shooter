@@ -45,7 +45,7 @@ namespace UI
         {
             
             if(currentlyInteracting)
-            {
+            {//TODO need to add type checking so that it only responds to the right ones
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (!currentReaction.NextStep())
