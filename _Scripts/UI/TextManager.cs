@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Events.EventObjects;
+using Interactions;
 using Interactions.Reactions;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace UI
         [SerializeField] private VoidEventObject allowMovement;
         private bool currentlyInteracting;
         private Reaction currentReaction;
+        private ReactionCollection currentReactionCollection;
         
 
         void Awake()
@@ -43,27 +45,40 @@ namespace UI
         {
             
             if(currentlyInteracting)
-            {
+            {//TODO need to add type checking so that it only responds to the right ones
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (!currentReaction.NextStep())
                     {
-                        currentlyInteracting = false;
-                        textDisplay.gameObject.SetActive(false);
-                        allowMovement.Raise();
+                        if (!currentReactionCollection.TryNextReaction())
+                        {
+                            Debug.Log("Free to go");
+                            currentlyInteracting = false;
+                            textDisplay.gameObject.SetActive(false);
+                            allowMovement.Raise();
+                        }
+                        else
+                        {
+                            currentReaction = currentReactionCollection.GetNextReaction();
+                            currentReaction.React(textDisplay);
+                        }    
                     }
+                    
                 }
             }
         }
 
-        public void TriggerReaction(Reaction reaction)
+        public void TriggerReaction(ReactionCollection reaction)
         {
             if (!currentlyInteracting)
             {
+                
                 currentlyInteracting = true;
-                reaction.React(textDisplay);
-                currentReaction = reaction;
-
+                //reaction.React(textDisplay);
+                //currentReaction = reaction;
+                currentReactionCollection = reaction;
+                currentReaction = reaction.GetNextReaction();
+                currentReaction.React(textDisplay);
             }
             else
             {

@@ -12,8 +12,11 @@ using UnityEngine;
 
 
 /**
- * Requires that the game object attached has a secondary trigger collider,
- * will not interfere with other collision detection
+ * In order for interactions to work, the game object must have a void event listener that listens for a start interaction call
+ * When an interaction attempt is made, it will check the current ConditionCollection. If that passes, then it will send the attached reactioncollection
+ * to the proper listeners.
+ *
+ * The conditions are scriptalbe objects that can have their satisfied value set by any action. Just need to make sure that they are notified by it.
  */
 [RequireComponent(typeof(VoidEventListener))]
 public class Interactable : MonoBehaviour
@@ -54,6 +57,7 @@ public class Interactable : MonoBehaviour
         if (currentConditionIndex >= conditionCollections.Length)
         {
             reactionEventObject.Raise(defaultReaction);
+            Debug.Log("Playing Default Reaction");
         }
         else
         {
@@ -64,10 +68,11 @@ public class Interactable : MonoBehaviour
             else
             {
                 reactionEventObject.Raise(defaultReaction);
+                Debug.Log("Playing Default Reaction");
             }
         }
         
-        Debug.Log("Looking for interaction text");
+        
         
         
     }
