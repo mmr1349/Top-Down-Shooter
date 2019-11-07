@@ -9,6 +9,7 @@ namespace Interactions.Reactions
     {
         protected bool isRunning;
         public bool hasBeenPlayed;
+        [SerializeField] protected GameObject reactionObject;
 
         public void Init()
         {
@@ -28,9 +29,19 @@ namespace Interactions.Reactions
             ImmediateReaction();
         }
 
+        public void React()
+        {
+            ImmediateReaction();
+        }
+
         protected abstract void ImmediateReaction();
 
         public abstract bool NextStep();
+
+        public GameObject getReactionObject()
+        {
+            return reactionObject;
+        }
     }
 
 }

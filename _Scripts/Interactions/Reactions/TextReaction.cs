@@ -8,6 +8,7 @@ using UnityEngine;
 public class TextReaction : Reaction
 {
     [SerializeField] private List<string> sentences = new List<string>();
+    private TextMeshProUGUI textMesh;
     private TextManager textManager;
     
     //private TextManager textManager;
@@ -17,11 +18,15 @@ public class TextReaction : Reaction
     {
         index = 0;
         textManager = FindObjectOfType<TextManager>();
+        textMesh = reactionObject.GetComponentInChildren<TextMeshProUGUI>();
     }
-
+    
     protected override void ImmediateReaction()
     {
-        textManager.SetText(sentences[index]);
+        //textManager.SetText(sentences[index]);
+        Debug.Log(sentences[index]);
+        textMesh.SetText(sentences[index]);
+        
         index++;
     }
 
@@ -29,7 +34,10 @@ public class TextReaction : Reaction
     {
         if (index < sentences.Count)
         {
-            textManager.SetText(sentences[index]);
+            Debug.Log(sentences[index]);
+            textMesh.SetText(sentences[index]);
+            
+            //textManager.SetText(sentences[index]);
             index++;
             return true;
         }

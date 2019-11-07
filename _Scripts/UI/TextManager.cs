@@ -14,7 +14,7 @@ namespace UI
     public class TextManager : MonoBehaviour
     {
         private static TextManager instance;
-        [SerializeField] private TextMeshProUGUI textDisplay;
+        [SerializeField] private GameObject reactionDisplayArea;
         [SerializeField] private VoidEventObject allowMovement;
         private bool currentlyInteracting;
         private Reaction currentReaction;
@@ -37,7 +37,7 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-            textDisplay.gameObject.SetActive(false);
+            reactionDisplayArea.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -54,13 +54,16 @@ namespace UI
                         {
                             Debug.Log("Free to go");
                             currentlyInteracting = false;
-                            textDisplay.gameObject.SetActive(false);
+                            reactionDisplayArea.gameObject.SetActive(false);
+                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
                             allowMovement.Raise();
                         }
                         else
                         {
                             currentReaction = currentReactionCollection.GetNextReaction();
-                            currentReaction.React(textDisplay);
+                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
+                            Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                            currentReaction.React();
                         }    
                     }
                     
@@ -68,17 +71,16 @@ namespace UI
             }
         }
 
-        public void TriggerReaction(ReactionCollection reaction)
+        public void TriggerReaction(ReactionCollection reactionCollection)
         {
             if (!currentlyInteracting)
             {
-                
+                reactionDisplayArea.SetActive(true);   
                 currentlyInteracting = true;
-                //reaction.React(textDisplay);
-                //currentReaction = reaction;
-                currentReactionCollection = reaction;
-                currentReaction = reaction.GetNextReaction();
-                currentReaction.React(textDisplay);
+                currentReactionCollection = reactionCollection;
+                currentReaction = reactionCollection.GetNextReaction();
+                Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                currentReaction.React();
             }
             else
             {
@@ -88,8 +90,8 @@ namespace UI
 
         public void SetText(string text)
         {
-            textDisplay.gameObject.SetActive(true);
-            textDisplay.text = text;
+            reactionDisplayArea.gameObject.SetActive(true);
+            //reactionDisplayArea.text = text;
         }
     }
 

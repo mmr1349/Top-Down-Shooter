@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   hasBeenPlayed: 0
+  reactionObject: {fileID: 2940277215386079025, guid: 598641df9d95a42e9a4395dab8e3c334,
+    type: 3}
   sentences:
   - Hi
   - Test
+  - HELLO
+  - Please
