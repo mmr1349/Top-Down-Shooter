@@ -53,6 +53,8 @@ namespace UI
                         if (!currentReactionCollection.TryNextReaction())
                         {
                             Debug.Log("Free to go");
+                            currentReaction = null;
+                            currentReactionCollection = null;
                             currentlyInteracting = false;
                             reactionDisplayArea.gameObject.SetActive(false);
                             Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
@@ -79,8 +81,8 @@ namespace UI
                 currentlyInteracting = true;
                 currentReactionCollection = reactionCollection;
                 currentReaction = reactionCollection.GetNextReaction();
-                Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
-                currentReaction.React();
+                var reactionInstance = Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                currentReaction.React(reactionInstance);
             }
             else
             {

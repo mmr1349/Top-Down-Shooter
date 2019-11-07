@@ -10,6 +10,7 @@ namespace Interactions.Reactions
         protected bool isRunning;
         public bool hasBeenPlayed;
         [SerializeField] protected GameObject reactionObject;
+        protected GameObject reactionObjectInstance;
 
         public void Init()
         {
@@ -24,8 +25,9 @@ namespace Interactions.Reactions
             return isRunning;
         }
 
-        public void React(MonoBehaviour monoBehaviour)
+        public void React(GameObject gameObject)
         {
+            reactionObjectInstance = gameObject;
             ImmediateReaction();
         }
 

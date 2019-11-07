@@ -50,19 +50,22 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
+            if (allowMovement)
+            {
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                itemManager.currentyEquipped().Use();
-            }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    itemManager.currentyEquipped().Use();
+                }
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-            {
-                itemManager.EnableUsableUp();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-            {
-                itemManager.EnableUsableDown();
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+                {
+                    itemManager.EnableUsableUp();
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+                {
+                    itemManager.EnableUsableDown();
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)

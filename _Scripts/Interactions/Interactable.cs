@@ -25,6 +25,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private ConditionCollection[] conditionCollections;
     [SerializeField] private ReactionEventObject reactionEventObject;
     [SerializeField] private ReactionCollection defaultReaction;
+    [SerializeField] private VoidEventObject allowMovement;
     private int currentConditionIndex = 0;
     
     // Start is called before the first frame update
@@ -56,18 +57,20 @@ public class Interactable : MonoBehaviour
     {
         if (currentConditionIndex >= conditionCollections.Length)
         {
-            reactionEventObject.Raise(defaultReaction);
             Debug.Log("Playing Default Reaction");
+            PlayDefaultReaction();
+            
         }
         else
         {
             if (conditionCollections[currentConditionIndex].CheckSatisfied())
             {
                 reactionEventObject.Raise(conditionCollections[currentConditionIndex].GetReactionCollection());
+                currentConditionIndex++;
             }
             else
             {
-                reactionEventObject.Raise(defaultReaction);
+                PlayDefaultReaction();
                 Debug.Log("Playing Default Reaction");
             }
         }
@@ -76,6 +79,19 @@ public class Interactable : MonoBehaviour
         
         
     }
+
+    private void PlayDefaultReaction()
+    {
+        if (defaultReaction != null)
+        {
+            reactionEventObject.Raise(defaultReaction);
+        }
+        else
+        {
+            allowMovement.Raise();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerInput>())

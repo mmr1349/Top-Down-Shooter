@@ -18,11 +18,12 @@ public class TextReaction : Reaction
     {
         index = 0;
         textManager = FindObjectOfType<TextManager>();
-        textMesh = reactionObject.GetComponentInChildren<TextMeshProUGUI>();
+        
     }
     
     protected override void ImmediateReaction()
     {
+        textMesh = reactionObjectInstance.GetComponentInChildren<TextMeshProUGUI>();
         //textManager.SetText(sentences[index]);
         Debug.Log(sentences[index]);
         textMesh.SetText(sentences[index]);
