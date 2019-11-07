@@ -18,13 +18,14 @@ using UnityEngine;
  *
  * The conditions are scriptalbe objects that can have their satisfied value set by any action. Just need to make sure that they are notified by it.
  */
-[RequireComponent(typeof(VoidEventListener))]
+[RequireComponent(typeof(Vector3EventListener))]
 public class Interactable : MonoBehaviour
 {
     private bool canInteract = false;
     [SerializeField] private ConditionCollection[] conditionCollections;
     [SerializeField] private ReactionEventObject reactionEventObject;
     [SerializeField] private ReactionCollection defaultReaction;
+    [SerializeField] private VoidEventObject allowMovement;
     private int currentConditionIndex = 0;
     
     // Start is called before the first frame update
@@ -52,30 +53,50 @@ public class Interactable : MonoBehaviour
 //            Debug.Log($"Heard Condition {condition.description}");
 //        }
 //    }
-    public void StartInteraction()
+
+//TODO needs to listen to make sure the player is talking to it
+    public void StartInteraction(Vector3 location)
     {
+        var distance = Vector3.Distance(location, transform.position);
+        if (distance > 2) return;
         if (currentConditionIndex >= conditionCollections.Length)
         {
-            reactionEventObject.Raise(defaultReaction);
             Debug.Log("Playing Default Reaction");
+            PlayDefaultReaction();
+            
         }
         else
         {
             if (conditionCollections[currentConditionIndex].CheckSatisfied())
             {
                 reactionEventObject.Raise(conditionCollections[currentConditionIndex].GetReactionCollection());
+                currentConditionIndex++;
             }
             else
             {
-                reactionEventObject.Raise(defaultReaction);
+                PlayDefaultReaction();
                 Debug.Log("Playing Default Reaction");
             }
         }
-        
-        
-        
-        
+
+
+
+
+
     }
+
+    private void PlayDefaultReaction()
+    {
+        if (defaultReaction != null)
+        {
+            reactionEventObject.Raise(defaultReaction);
+        }
+        else
+        {
+            allowMovement.Raise();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerInput>())
