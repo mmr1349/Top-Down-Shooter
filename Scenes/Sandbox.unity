@@ -139,8 +139,8 @@ GameObject:
   - component: {fileID: 181789940}
   - component: {fileID: 181789939}
   - component: {fileID: 181789945}
-  - component: {fileID: 181789944}
   - component: {fileID: 181789943}
+  - component: {fileID: 181789944}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -239,6 +239,7 @@ MonoBehaviour:
   reactionEventObject: {fileID: 11400000, guid: 8f759cdcd65dc44a9919fde8bb0fbaa4,
     type: 2}
   defaultReaction: {fileID: 0}
+  allowMovement: {fileID: 11400000, guid: ee1931b8b17c141019e5aead5953776a, type: 2}
 --- !u!114 &181789944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,16 +249,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 181789938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 498f9016047e48c0a5e5d3d4843693b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f27ce11f31f8467b95a50b5c77af6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 9f4465e12bf674a0d8f0b743c1348839, type: 2}
+  gameEvent: {fileID: 11400000, guid: 43fb20046a21149bfb1abe24e48e8515, type: 2}
   unityEventRespone:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 181789943}
         m_MethodName: StartInteraction
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -266,7 +267,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Events.CustomEvents.VoidEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: Events.CustomEvents.Vector3Event, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!136 &181789945
 CapsuleCollider:
@@ -725,6 +726,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8159705858204862096, guid: 249d93d1f33db6545b1559f21378f057,
+        type: 3}
+      propertyPath: startInteraction
+      value: 
+      objectReference: {fileID: 11400000, guid: 43fb20046a21149bfb1abe24e48e8515,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 249d93d1f33db6545b1559f21378f057, type: 3}
 --- !u!1 &2123754476

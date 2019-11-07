@@ -18,7 +18,7 @@ using UnityEngine;
  *
  * The conditions are scriptalbe objects that can have their satisfied value set by any action. Just need to make sure that they are notified by it.
  */
-[RequireComponent(typeof(VoidEventListener))]
+[RequireComponent(typeof(Vector3EventListener))]
 public class Interactable : MonoBehaviour
 {
     private bool canInteract = false;
@@ -53,8 +53,12 @@ public class Interactable : MonoBehaviour
 //            Debug.Log($"Heard Condition {condition.description}");
 //        }
 //    }
-    public void StartInteraction()
+
+//TODO needs to listen to make sure the player is talking to it
+    public void StartInteraction(Vector3 location)
     {
+        var distance = Vector3.Distance(location, transform.position);
+        if (distance > 2) return;
         if (currentConditionIndex >= conditionCollections.Length)
         {
             Debug.Log("Playing Default Reaction");
@@ -74,10 +78,11 @@ public class Interactable : MonoBehaviour
                 Debug.Log("Playing Default Reaction");
             }
         }
-        
-        
-        
-        
+
+
+
+
+
     }
 
     private void PlayDefaultReaction()

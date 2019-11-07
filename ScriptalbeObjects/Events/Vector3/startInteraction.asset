@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f918841b40d420295046ef3877a837, type: 3}
-  m_Name: StartInteraction
+  m_Script: {fileID: 11500000, guid: 2c153f653fcec4b67b083360cb3d337b, type: 3}
+  m_Name: startInteraction
   m_EditorClassIdentifier: 
