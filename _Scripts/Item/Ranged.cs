@@ -12,14 +12,10 @@ namespace Items {
 
         public override void Use() {
             if (getUsable()) {
-                if(ammo.getAmount() > 0) {
-                    Debug.Log("We should be shooting " + ammo.getItemName());
-                    setUsable(false);
-                    StartCoroutine(setUsableTrue());
-                    GameObject projectile = ammo.getProjectile();
-                    ammo.Use();
-                    Instantiate(projectile, getDamageSpawnLocation().position, Quaternion.LookRotation(getDamageSpawnLocation().forward));
-                }
+                setUsable(false);
+                StartCoroutine(setUsableTrue());
+                GameObject projectile = ammo.gameObject;
+                Instantiate(projectile, getDamageSpawnLocation().position, Quaternion.LookRotation(getDamageSpawnLocation().forward));
             }
         }
     }

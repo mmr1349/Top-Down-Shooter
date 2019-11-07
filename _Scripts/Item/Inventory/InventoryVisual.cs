@@ -14,7 +14,10 @@ public class InventoryVisual : MonoBehaviour {
     [SerializeField] private InventorySlot inventorySlotPrefab;
     [SerializeField] private InventorySlot[,] inventoryPositions;
 
+    private EquippedItemManager equippedItems;
+
     private void Start() {
+        equippedItems = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItemManager>();
         createInventoryGrid();
         displayItemsFromInventory();
     }
@@ -29,13 +32,23 @@ public class InventoryVisual : MonoBehaviour {
         }
     }
 
+    public void putItemIntoHotBar(Item item) {
+        Usable usable = item as Usable;
+        if (usable != null) {
+            equippedItems.transferItemFromInventory(usable);
+            displayItemsFromInventory();
+        } else {
+            Debug.Log("This item is not equippable " + item.name);
+        }
+    }
+
     private void displayItemsFromInventory() {
         List<Item> items = inventory.getAllItems();
         int count = 0;
         for (int c = 0; c < columns; c++) {
             for (int r = 0; r < rows; r++) {
-                if (count > items.Count) {
-                    break;
+                if (count >= items.Count) {
+                    inventoryPositions[c, r].removeItem();
                 } else {
                     inventoryPositions[c, r].setItem(items[count]);
                     count++;

@@ -12,10 +12,6 @@ namespace Items {
             setUsable(true);
         }
 
-        public MeleeWeapon(string itemName, string description, int price, Sprite sprite, GameObject damagerObject, float coolDown, Transform damageSpawnLocation) : base(itemName, description, price, sprite, coolDown, damageSpawnLocation) {
-            //Do nothing
-        }
-
         public override void Use() {
             if(getUsable()) {
                 setUsable(false);

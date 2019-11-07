@@ -720,12 +720,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8159705857044497013}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &469804204 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8159705858204862110, guid: 249d93d1f33db6545b1559f21378f057,
-    type: 3}
-  m_PrefabInstance: {fileID: 8159705857044497013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &469804205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,7 +736,7 @@ MonoBehaviour:
   inventoryItems:
   - {fileID: 1882714592}
   - {fileID: 698917083}
-  - {fileID: 1245912386}
+  - {fileID: 3129008839839108243, guid: 7e032069c98cda34280a9ca2cbf790e8, type: 3}
 --- !u!1 &473573354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,75 +2187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 469804194}
   offset: {x: 0, y: 17, z: -5}
---- !u!1001 &1035376279
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 469804204}
-    m_Modifications:
-    - target: {fileID: 3129008839839108240, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_Name
-      value: Health Potion
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.083
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.725
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3129008839839108242, guid: 70db1885034131343ae26aaac00e5d47,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 70db1885034131343ae26aaac00e5d47, type: 3}
 --- !u!1 &1085968267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,18 +2591,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000019073, y: 0.000005722}
   m_SizeDelta: {x: 74.81, y: 20.84}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1245912386 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3129008839839108243, guid: 70db1885034131343ae26aaac00e5d47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1035376279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978cdf82802165443a4ea4ed7eeb5dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1285026137
 GameObject:
   m_ObjectHideFlags: 0

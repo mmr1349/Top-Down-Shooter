@@ -16,14 +16,15 @@ namespace Player
         private Camera main;
         private Plane raycastPlane;
         private EquippedItemManager itemManager;
+        private InventoryVisual inventoryVisual;
 
         private bool allowMovement = true;
 
         private bool canInteract = false;
 
         // Start is called before the first frame update
-        void Start()
-        {
+        void Start() {
+            inventoryVisual = GameObject.FindObjectOfType<InventoryVisual>();
             main = Camera.main;
             movement = GetComponent<Movement>();
             raycastPlane = new Plane(Vector3.up, 0f);
@@ -73,6 +74,10 @@ namespace Player
                     startInteraction.Raise();
                 }
 
+            }
+
+            if (Input.GetKeyDown(KeyCode.I)) {
+                inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
             }
 
         }
