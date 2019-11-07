@@ -12,11 +12,6 @@ namespace Items {
             mana = GetComponentInParent<Mana>();
         }
 
-        public MagicWeapon(string itemName, string description, int price, Sprite sprite, float coolDown, Transform damageSpawnLocation, GameObject projectile, float manaCost) : base(itemName, description, price, sprite, coolDown, damageSpawnLocation) {
-            this.projectile = projectile;
-            this.manaCost = manaCost;
-        }
-
         public override void Use() {
             if (getUsable()) {
                 if (mana.tryToUseMana(manaCost)) {

@@ -5,7 +5,7 @@ using Items.Inventory;
 using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler {
     private Image itemImage;
-    [SerializeField]private Item item;
+    [SerializeField]private ItemScriptableObject item;
     [SerializeField] private static InventoryVisual visual;
 
     private void Awake() {
@@ -16,9 +16,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerClickH
     }
 
 
-    public void setItem(Item item) {
+    public void setItem(ItemScriptableObject item) {
         this.item = item;
-        itemImage.sprite = item.getSprite();
+        itemImage.sprite = item.sprite;
     }
 
     public void removeItem() {
@@ -32,13 +32,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerClickH
     }
 
     private void OnMouseOver() {
-        Debug.Log("Name: " + item.getItemName());
-        Debug.Log("Description: " + item.getDescription());
+        Debug.Log("Name: " + item.name);
+        Debug.Log("Description: " + item.description);
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Debug.Log("Name: " + item.getItemName());
-        Debug.Log("Description: " + item.getDescription());
+        Debug.Log("Name: " + item.name);
+        Debug.Log("Description: " + item.description);
     }
 
     public void OnPointerClick(PointerEventData eventData) {

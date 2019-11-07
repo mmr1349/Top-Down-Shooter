@@ -57,13 +57,11 @@ namespace Player
                 itemManager.currentyEquipped().Use();
             }
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-            {
-                itemManager.EnableUsableUp();
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                itemManager.EnableEquippableUp();
             }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-            {
-                itemManager.EnableUsableDown();
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                itemManager.EnableEquippableDown();
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)

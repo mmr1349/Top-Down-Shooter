@@ -29,6 +29,6 @@ public class PlayerUIController : MonoBehaviour {
         healthText.text = Mathf.Round(playerHealth.GetHealth()).ToString();
         manaBar.value = playerMana.getManaAmount() / playerMana.getMaxManaAmount();
         manaText.text = Mathf.Round(playerMana.getManaAmount()).ToString();
-        itemSprite.sprite = itemManager.currentyEquipped().getSprite();
+        itemSprite.sprite = itemManager.currentyEquipped().getScripatbleObject().sprite;
     }
 }

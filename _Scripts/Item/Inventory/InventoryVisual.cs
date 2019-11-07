@@ -32,10 +32,9 @@ public class InventoryVisual : MonoBehaviour {
         }
     }
 
-    public void putItemIntoHotBar(Item item) {
-        Usable usable = item as Usable;
-        if (usable != null) {
-            equippedItems.transferItemFromInventory(usable);
+    public void putItemIntoHotBar(ItemScriptableObject item) {
+        if (item.itemType == ItemTypeEnum.USABLE) {
+            //equippedItems.transferItemFromInventory(item);
             displayItemsFromInventory();
         } else {
             Debug.Log("This item is not equippable " + item.name);
@@ -43,7 +42,7 @@ public class InventoryVisual : MonoBehaviour {
     }
 
     private void displayItemsFromInventory() {
-        List<Item> items = inventory.getAllItems();
+        List<ItemScriptableObject> items = inventory.getAllItems();
         int count = 0;
         for (int c = 0; c < columns; c++) {
             for (int r = 0; r < rows; r++) {

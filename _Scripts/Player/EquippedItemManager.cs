@@ -7,70 +7,70 @@ using Items.Inventory;
 public class EquippedItemManager : MonoBehaviour {
 
     [SerializeField] private const int TOOLBAR_SIZE = 3;
-    [SerializeField] private List<Equippable> itemList;
+    [SerializeField] private List<Equippable> weaponGameObjectList;
     [SerializeField] private int currentIndex;
 
     private Inventory inventory;
     // Start is called before the first frame update
     void Start() {
         currentIndex = 0;
-        itemList = new List<Equippable>();
-        itemList.AddRange(GetComponentsInChildren<Equippable>());
-        itemList[currentIndex].gameObject.SetActive(true);
-        for (int i = 1; i < itemList.Count; i++) {
-            itemList[i].gameObject.SetActive(false);
+        weaponGameObjectList = new List<Equippable>();
+        weaponGameObjectList.AddRange(GetComponentsInChildren<Equippable>());
+        for (int i = 1; i < weaponGameObjectList.Count; i++) {
+            weaponGameObjectList[i].gameObject.SetActive(false);
         }
+        weaponGameObjectList[currentIndex].gameObject.SetActive(true);
     }
 
     public Equippable currentyEquipped() {
-        return itemList[currentIndex];
+        return weaponGameObjectList[currentIndex];
     }
 
     public Equippable EnableEquippableUp() {
-        itemList[currentIndex].gameObject.SetActive(false);
+        weaponGameObjectList[currentIndex].gameObject.SetActive(false);
         currentIndex++;
-        if (currentIndex >= itemList.Count) {
+        if (currentIndex >= weaponGameObjectList.Count) {
             currentIndex = 0;
         }
-        itemList[currentIndex].gameObject.SetActive(true);
-        return itemList[currentIndex];
+        weaponGameObjectList[currentIndex].gameObject.SetActive(true);
+        return weaponGameObjectList[currentIndex];
     }
 
     public Equippable EnableEquippableDown() {
-        itemList[currentIndex].gameObject.SetActive(false);
+        weaponGameObjectList[currentIndex].gameObject.SetActive(false);
         currentIndex--;
         if (currentIndex < 0) {
-            currentIndex = itemList.Count-1;
+            currentIndex = weaponGameObjectList.Count-1;
         }
-        itemList[currentIndex].gameObject.SetActive(true);
-        return itemList[currentIndex];
+        weaponGameObjectList[currentIndex].gameObject.SetActive(true);
+        return weaponGameObjectList[currentIndex];
     }
 
     public Equippable EnableEquippableIndex(int index) {
-        if (index > 0 && index < itemList.Count) {
-            itemList[currentIndex].gameObject.SetActive(false);
+        if (index > 0 && index < weaponGameObjectList.Count) {
+            weaponGameObjectList[currentIndex].gameObject.SetActive(false);
             currentIndex = index;
-            itemList[currentIndex].gameObject.SetActive(true);
+            weaponGameObjectList[currentIndex].gameObject.SetActive(true);
         }
-        return itemList[currentIndex];
+        return weaponGameObjectList[currentIndex];
     }
 
     public bool transferItemFromInventory(Equippable item) {
-        if (itemList.Count < TOOLBAR_SIZE) {
+        if (weaponGameObjectList.Count < TOOLBAR_SIZE) {
             Vector3 itemPosition = new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z);
             Equippable instantiatedItem = Instantiate(item.gameObject, itemPosition, Quaternion.identity, transform).GetComponent<Equippable>();
-            itemList.Add(instantiatedItem);
-            inventory.removeItemFromInventory(item);
+            weaponGameObjectList.Add(instantiatedItem);
+            inventory.removeItemsFromInventory(item.getScripatbleObject(), 1);
             return true;
         }
         return false;
     }
 
     public bool transferItemIntoInventory(Equippable item) {
-        if (itemList.Contains(item)) {
-            if (inventory.addItemToInventory(item)) {
+        if (weaponGameObjectList.Contains(item)) {
+            if (inventory.addItemToInventory(item.getScripatbleObject())) {
                 Destroy(item.gameObject);
-                itemList.Remove(item);
+                weaponGameObjectList.Remove(item);
                 return true;
             }
         }

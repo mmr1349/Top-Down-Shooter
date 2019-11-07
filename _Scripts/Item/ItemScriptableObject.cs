@@ -13,8 +13,9 @@ namespace Items
         public int cost;
         public bool stackable;
         public GameObject prefab;
+        public int amount;
 
-        public ItemScriptableObject(string name, string description, ItemTypeEnum itemType, Sprite sprite, int cost, bool stackable, GameObject prefab) {
+        public ItemScriptableObject(string name, string description, ItemTypeEnum itemType, Sprite sprite, int cost, bool stackable, GameObject prefab, int amount) {
             this.name = name;
             this.description = description;
             this.itemType = itemType;
@@ -22,6 +23,15 @@ namespace Items
             this.cost = cost;
             this.stackable = stackable;
             this.prefab = prefab;
+            this.amount = amount;
+        }
+
+        public static bool operator ==(ItemScriptableObject a, ItemScriptableObject b) {
+            return a.description == b.description && a.name == b.name && a.itemType == b.itemType;
+        }
+
+        public static bool operator !=(ItemScriptableObject a, ItemScriptableObject b) {
+            return a.description != b.description || a.name != b.name || a.itemType != b.itemType;
         }
     }
 
