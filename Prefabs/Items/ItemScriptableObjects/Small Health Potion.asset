@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de8a43936a44862469ed80f280d3673b, type: 3}
-  m_Name: Gold
+  m_Name: Small Health Potion
   m_EditorClassIdentifier: 
-  itemName: Gold
-  description: Gold spend it at merchants.
-  itemType: 5
-  sprite: {fileID: 21300000, guid: 6613dba57381d3947bfd1549766df3dd, type: 3}
-  cost: 1
+  name: Small Health Potion
+  description: Heals you for 25 health
+  itemType: 1
+  sprite: {fileID: 21300000, guid: 979bd10cd621ba847b128495c7b45aa8, type: 3}
+  cost: 50
   stackable: 1
   prefab: {fileID: 0}
+  amount: 0

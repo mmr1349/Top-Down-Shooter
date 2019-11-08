@@ -9,10 +9,9 @@ namespace Character
 
         [SerializeField] private float health;
         [SerializeField] private float maxHealth = 100;
-        public delegate void OnDieDelegate();
-        public OnDieDelegate ourDieDelegate;
         // Start is called before the first frame update
-        void Start() {
+        void Start()
+        {
             health = maxHealth;
         }
 
@@ -20,7 +19,6 @@ namespace Character
             health -= amount;
             if (health <= 0) {
                 Debug.Log("We have died.");
-                ourDieDelegate?.Invoke();
                 Destroy(this.gameObject);
             }
         }

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de8a43936a44862469ed80f280d3673b, type: 3}
-  m_Name: Bow
+  m_Name: Gun
   m_EditorClassIdentifier: 
-  itemName: Bow
-  description: Shoot arrow at your enemies.
+  name: Gun
+  description: Freaking shoot enemies in the face!
   itemType: 0
-  sprite: {fileID: 21300000, guid: b8a28d8f4f9ec4b47845ce7e21651308, type: 3}
-  cost: 100
+  sprite: {fileID: 21300000, guid: 4016e3d2635823343941a33fa52e411a, type: 3}
+  cost: 1000
   stackable: 0
-  prefab: {fileID: 5462740966850052565, guid: 04ea50bf3defc404fa0d3447b6a6db68, type: 3}
+  prefab: {fileID: 0}
+  amount: 1

@@ -18,7 +18,10 @@ GameObject:
   - component: {fileID: 8159705858204862096}
   - component: {fileID: 3018731686982865911}
   - component: {fileID: 2228898937157486825}
+<<<<<<< HEAD
   - component: {fileID: 18386762}
+=======
+>>>>>>> parent of 16b360c... Finally got the inventory working!!!
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -39,7 +42,10 @@ Transform:
   m_Children:
   - {fileID: 1426625280}
   - {fileID: 3145280685795716306}
+<<<<<<< HEAD
   - {fileID: 8805099242286199409}
+=======
+>>>>>>> parent of 16b360c... Finally got the inventory working!!!
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,9 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6265e3f0a2d86439524288ca842ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponGameObjectList: []
+  itemList: []
   currentIndex: 0
+<<<<<<< HEAD
   weaponSpawnLocation: {fileID: 0}
+=======
+>>>>>>> parent of 16b360c... Finally got the inventory working!!!
 --- !u!114 &8159705858204862099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069d3404d61e327499eeb9e7a940482d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInteraction: {fileID: 0}
 --- !u!114 &3018731686982865911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +182,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+<<<<<<< HEAD
   jumpHeight: 10
+=======
+>>>>>>> parent of 16b360c... Finally got the inventory working!!!
 --- !u!114 &2228898937157486825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +201,7 @@ MonoBehaviour:
   manaAmount: 100
   maxManaAmount: 100
   regenRate: 10
+<<<<<<< HEAD
 --- !u!114 &18386762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +261,8 @@ Transform:
   m_Father: {fileID: 8159705858204862110}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 16b360c... Finally got the inventory working!!!
 --- !u!1001 &446628072090977987
 PrefabInstance:
   m_ObjectHideFlags: 0

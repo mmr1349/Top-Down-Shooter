@@ -6,10 +6,9 @@ using Items.Inventory;
 
 public class EquippedItemManager : MonoBehaviour {
 
-    [SerializeField] private const int TOOLBAR_SIZE = 10;
+    [SerializeField] private const int TOOLBAR_SIZE = 3;
     [SerializeField] private List<Equippable> weaponGameObjectList;
     [SerializeField] private int currentIndex;
-    [SerializeField] private Transform weaponSpawnLocation;
 
     private Inventory inventory;
     // Start is called before the first frame update
@@ -21,7 +20,6 @@ public class EquippedItemManager : MonoBehaviour {
             weaponGameObjectList[i].gameObject.SetActive(false);
         }
         weaponGameObjectList[currentIndex].gameObject.SetActive(true);
-        inventory = GetComponent<Inventory>();
     }
 
     public Equippable currentyEquipped() {
@@ -57,22 +55,20 @@ public class EquippedItemManager : MonoBehaviour {
         return weaponGameObjectList[currentIndex];
     }
 
-    public bool transferItemFromInventory(ItemScriptableObject item) {
+    public bool transferItemFromInventory(Equippable item) {
         if (weaponGameObjectList.Count < TOOLBAR_SIZE) {
-            Debug.Log("Trying to remove item from inventory: " + item.itemName);
-            if (inventory.removeItemsFromInventory(item, 1)) {
-                Equippable instantiatedItem = Instantiate(item.prefab, weaponSpawnLocation.position, weaponSpawnLocation.rotation, transform).GetComponent<Equippable>();
-                weaponGameObjectList.Add(instantiatedItem);
-                instantiatedItem.gameObject.SetActive(false);
-                return true;
-            }
+            Vector3 itemPosition = new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z);
+            Equippable instantiatedItem = Instantiate(item.gameObject, itemPosition, Quaternion.identity, transform).GetComponent<Equippable>();
+            weaponGameObjectList.Add(instantiatedItem);
+            inventory.removeItemsFromInventory(item.getScripatbleObject(), 1);
+            return true;
         }
         return false;
     }
 
     public bool transferItemIntoInventory(Equippable item) {
         if (weaponGameObjectList.Contains(item)) {
-            if (inventory.addItemToInventory(item.getScripatbleObject(), 1)) {
+            if (inventory.addItemToInventory(item.getScripatbleObject())) {
                 Destroy(item.gameObject);
                 weaponGameObjectList.Remove(item);
                 return true;

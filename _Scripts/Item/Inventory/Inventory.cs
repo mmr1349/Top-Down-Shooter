@@ -11,47 +11,28 @@ namespace Items.Inventory {
     *******************************************************************************************/
     public class Inventory : MonoBehaviour {
         [SerializeField] private int inventorySize;
-        [SerializeField] private Dictionary<ItemScriptableObject, int> itemDictionary;
-        [SerializeField] private List<ItemScriptableObject> inventoryVisual;
+        [SerializeField] private Dictionary<string, ItemScriptableObject> itemDictionary;
 
-        public delegate void InventoryChangedDelegate();
-        public InventoryChangedDelegate ourInventoryChanged;
 
-        private void Start() {
-            inventoryVisual = new List<ItemScriptableObject>();
-            itemDictionary = new Dictionary<ItemScriptableObject, int>();
-        }
-
-        public bool addItemToInventory(ItemScriptableObject item, int amount) {
-            if (amount > 0) {
-                if (itemDictionary.Count < inventorySize) {
-                    if (itemDictionary.ContainsKey(item)) {
-                        itemDictionary[item] += amount;
-                        ourInventoryChanged();
-                        return true;
-                    } else {
-                        inventoryVisual.Add(item);
-                        itemDictionary.Add(item, amount);
-                        ourInventoryChanged();
-                        return true;
-                    }
-
+        public bool addItemToInventory(ItemScriptableObject item) {
+            if (itemDictionary.Count < inventorySize) {
+                if (itemDictionary.ContainsKey(item.name)) {
+                    itemDictionary[item.name].amount += item.amount;
+                    return true;
+                } else {
+                    itemDictionary.Add(item.name, item);
+                    return true;
                 }
-            } else {
-                Debug.Log("Trying to add an item of amount " + amount.ToString());
+                
             }
             return false;
         }
 
         public bool removeItemsFromInventory(ItemScriptableObject item, int amount) {
-            Debug.Log("Looking for " + item.itemName + " in the dictionary");
-            if (itemDictionary.ContainsKey(item)) {
-                Debug.Log("Found the item in the dictionary removing " + amount);
-                itemDictionary[item] -= amount;
-                if (itemDictionary[item] <= 0) {
-                    itemDictionary.Remove(item);
-                    inventoryVisual.Remove(item);
-                    ourInventoryChanged();
+            if (itemDictionary.ContainsKey(item.name)) {
+                itemDictionary[item.name].amount -= amount;
+                if (itemDictionary[item.name].amount <= 0) {
+                    itemDictionary.Remove(item.name);
                 }
                 return true;
             }
@@ -59,15 +40,7 @@ namespace Items.Inventory {
         }
 
         public List<ItemScriptableObject> getAllItems() {
-            return new List<ItemScriptableObject>(itemDictionary.Keys);
-        }
-
-        public int getItemAmount(ItemScriptableObject item) {
-            return itemDictionary[item];
-        }
-
-        public List<int> getItemAmounts() {
-            return new List<int>(itemDictionary.Values);
+            return new List<ItemScriptableObject>(itemDictionary.Values);
         }
     }
 }
