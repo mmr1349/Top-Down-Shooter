@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Items;
 
-public class EquippedItemManager : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private List<Usable> itemList;
+    public class EquippedItemManager : MonoBehaviour {
+
+    [SerializeField] private const int TOOLBAR_SIZE = 10;
+    [SerializeField] private List<Equippable> weaponGameObjectList;
     [SerializeField] private int currentIndex;
     // Start is called before the first frame update
     void Start() {
@@ -50,4 +53,6 @@ public class EquippedItemManager : MonoBehaviour
         }
         return itemList[currentIndex];
     }
+}
+
 }
