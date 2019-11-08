@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Events.EventObjects;
+using Interactions;
 using Interactions.Reactions;
 using TMPro;
 using UnityEngine;
@@ -13,10 +14,11 @@ namespace UI
     public class TextManager : MonoBehaviour
     {
         private static TextManager instance;
-        [SerializeField] private TextMeshProUGUI textDisplay;
+        [SerializeField] private GameObject reactionDisplayArea;
         [SerializeField] private VoidEventObject allowMovement;
         private bool currentlyInteracting;
         private Reaction currentReaction;
+        private ReactionCollection currentReactionCollection;
         
 
         void Awake()
@@ -35,7 +37,7 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-            textDisplay.gameObject.SetActive(false);
+            reactionDisplayArea.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -43,27 +45,45 @@ namespace UI
         {
             
             if(currentlyInteracting)
-            {
+            {//TODO need to add type checking so that it only responds to the right ones
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (!currentReaction.NextStep())
                     {
-                        currentlyInteracting = false;
-                        textDisplay.gameObject.SetActive(false);
-                        allowMovement.Raise();
+                        if (!currentReactionCollection.TryNextReaction())
+                        {
+                            Debug.Log("Free to go");
+                            currentReaction = null;
+                            currentReactionCollection = null;
+                            currentlyInteracting = false;
+                            reactionDisplayArea.gameObject.SetActive(false);
+                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
+                            allowMovement.Raise();
+                        }
+                        else
+                        {
+                            currentReaction = currentReactionCollection.GetNextReaction();
+                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
+                            var reactionInstance = Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                            currentReaction.React(reactionInstance);
+
+                        }    
                     }
+                    
                 }
             }
         }
 
-        public void TriggerReaction(Reaction reaction)
+        public void TriggerReaction(ReactionCollection reactionCollection)
         {
             if (!currentlyInteracting)
             {
+                reactionDisplayArea.SetActive(true);   
                 currentlyInteracting = true;
-                reaction.React(textDisplay);
-                currentReaction = reaction;
-
+                currentReactionCollection = reactionCollection;
+                currentReaction = reactionCollection.GetNextReaction();
+                var reactionInstance = Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                currentReaction.React(reactionInstance);
             }
             else
             {
@@ -73,8 +93,8 @@ namespace UI
 
         public void SetText(string text)
         {
-            textDisplay.gameObject.SetActive(true);
-            textDisplay.text = text;
+            reactionDisplayArea.gameObject.SetActive(true);
+            //reactionDisplayArea.text = text;
         }
     }
 
