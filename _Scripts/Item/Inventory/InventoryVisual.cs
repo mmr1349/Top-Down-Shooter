@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Items;
 using Items.Inventory;
+using Player;
 using UnityEngine.UI;
 
 public class InventoryVisual : MonoBehaviour {
