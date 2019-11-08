@@ -122,10 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e31c038f9ff6240b9f818ba3ca89bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Flaming Staff
-  description: Shoots fireballs at your enemy
-  price: 100
-  sprite: {fileID: 21300000, guid: 7c9b930f46fef8b4680bcb0aeb32e9ff, type: 3}
+  data: {fileID: 11400000, guid: d89fd81835f4cad47b33a1c269bc4678, type: 2}
   damageSpawnLocation: {fileID: 446628070165181060}
   coolDown: 0.5
   usable: 1

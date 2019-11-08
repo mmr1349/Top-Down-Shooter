@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
-using Events.CustomEvents;
 using Events.EventObjects;
 using UnityEngine;
 using Weapons;
@@ -11,20 +10,21 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        [SerializeField] private Vector3EventObject startInteraction;
+        [SerializeField] private VoidEventObject startInteraction;
 
         private Movement movement;
         private Camera main;
         private Plane raycastPlane;
         private EquippedItemManager itemManager;
+        private InventoryVisual inventoryVisual;
 
         private bool allowMovement = true;
 
         private bool canInteract = false;
 
         // Start is called before the first frame update
-        void Start()
-        {
+        void Start() {
+            inventoryVisual = GameObject.FindObjectOfType<InventoryVisual>();
             main = Camera.main;
             movement = GetComponent<Movement>();
             raycastPlane = new Plane(Vector3.up, 0f);
@@ -51,22 +51,17 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
-            if (allowMovement)
+
+            if (Input.GetMouseButtonDown(0))
             {
+                itemManager.currentyEquipped().Use();
+            }
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    itemManager.currentyEquipped().Use();
-                }
-
-                if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-                {
-                    itemManager.EnableUsableUp();
-                }
-                else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-                {
-                    itemManager.EnableUsableDown();
-                }
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                itemManager.EnableEquippableUp();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                itemManager.EnableEquippableDown();
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)
@@ -74,9 +69,13 @@ namespace Player
                 allowMovement = !allowMovement;
                 if (!allowMovement)
                 {
-                    startInteraction.Raise(transform.position);
+                    startInteraction.Raise();
                 }
 
+            }
+
+            if (Input.GetKeyDown(KeyCode.I)) {
+                inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
             }
 
         }

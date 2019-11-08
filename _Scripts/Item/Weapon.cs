@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Items {
-    public abstract class Weapon : Usable {
+    public abstract class Weapon : Equippable {
         [SerializeField] private Transform damageSpawnLocation;
         [SerializeField] private float coolDown;
         [SerializeField] private bool usable;
-
-        public Weapon(string itemName, string description, int price, Sprite sprite, float coolDown, Transform damageSpawnLocation) : base(itemName, description, price, sprite) {
-            this.coolDown = coolDown;
-            this.damageSpawnLocation = damageSpawnLocation;
-        }
 
         public IEnumerator setUsableTrue() {
             yield return new WaitForSeconds(coolDown);

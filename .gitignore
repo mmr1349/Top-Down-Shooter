@@ -1,4 +1,3 @@
-# =============== #
 # Unity generated #
 # =============== #
 [Tt]emp/
@@ -11,7 +10,6 @@ sysinfo.txt
 /Assets/AssetStoreTools*
 *.apk
 *.unitypackage
-TextMesh*Pro/
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

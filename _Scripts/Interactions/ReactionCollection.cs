@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace Interactions
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/Reaction Collection",fileName = "New Reaction Collection")]
-    public class ReactionCollection : ScriptableObject
+    public class ReactionCollection : MonoBehaviour
     {
         [SerializeField] private Reaction[] reactions;
         private int index = 0;
@@ -25,7 +24,6 @@ namespace Interactions
 
         public void Init()
         {
-            index = 0;
             foreach (var reaction in reactions)
             {
                 reaction.Init();
