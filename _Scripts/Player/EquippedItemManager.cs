@@ -33,13 +33,6 @@ public class EquippedItemManager : MonoBehaviour {
         currentIndex++;
         if (currentIndex >= weaponGameObjectList.Count) {
             currentIndex = 0;
-            itemList = new List<Usable>();
-            itemList.AddRange(GetComponentsInChildren<Usable>());
-            itemList[currentIndex].gameObject.SetActive(true);
-            for (int i = 1; i < itemList.Count; i++)
-            {
-                itemList[i].gameObject.SetActive(false);
-            }
         }
         weaponGameObjectList[currentIndex].gameObject.SetActive(true);
         return weaponGameObjectList[currentIndex];
