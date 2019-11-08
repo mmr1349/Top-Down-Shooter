@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3505989657370639153}
   - component: {fileID: 3505989657370639152}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: Small Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3505989657370639155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 8560093814637726707}
   - {fileID: 4202384966758182896}
@@ -77,10 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3eeff9dec974d4f822c9ad198b61a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 100
-  damage: 20
+  movementSpeed: 75
+  damage: 10
   owner: {fileID: 0}
-  lifetime: 1
+  lifetime: 1.5
 --- !u!1 &6952616854842722806
 GameObject:
   m_ObjectHideFlags: 0

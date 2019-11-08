@@ -8,14 +8,9 @@ using Weapons;
 
 namespace Player
 {
-<<<<<<< HEAD
-    public class PlayerInput : MonoBehaviour {
-        [SerializeField] private Vector3EventObject startInteraction;
-=======
     public class PlayerInput : MonoBehaviour
     {
         [SerializeField] private VoidEventObject startInteraction;
->>>>>>> parent of eef2333... Merging
 
         private Movement movement;
         private Camera main;
@@ -37,12 +32,14 @@ namespace Player
         }
 
         // Update is called once per frame
-        void Update() {
+        void Update()
+        {
             RaycastHit hit;
             Ray mouseRay = main.ScreenPointToRay(Input.mousePosition);
             float enter;
             //For plane casting
-            if (raycastPlane.Raycast(mouseRay, out enter)) {
+            if (raycastPlane.Raycast(mouseRay, out enter))
+            {
                 Vector3 hitPoint = mouseRay.GetPoint(enter);
                 movement.LookPosition(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
             }
@@ -54,34 +51,6 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
-<<<<<<< HEAD
-            if (allowMovement) {
-
-                if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-                    itemManager.EnableEquippableUp();
-                }
-                else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
-                    itemManager.EnableEquippableDown();
-
-                    if (Input.GetMouseButtonDown(0)) {
-                        itemManager.currentyEquipped().Use();
-                    }
-
-                    if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-                        itemManager.EnableEquippableUp();
-                    }
-                    else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
-                        itemManager.EnableEquippableDown();
-                    }
-                }
-
-                if (Input.GetKeyDown(KeyCode.F) && canInteract) {
-                    allowMovement = !allowMovement;
-                    if (!allowMovement) {
-                        startInteraction.Raise(transform.position);
-                    }
-
-=======
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -101,14 +70,14 @@ namespace Player
                 if (!allowMovement)
                 {
                     startInteraction.Raise();
->>>>>>> parent of eef2333... Merging
-                }
-
-                if (Input.GetKeyDown(KeyCode.I)) {
-                    inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
                 }
 
             }
+
+            if (Input.GetKeyDown(KeyCode.I)) {
+                inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
+            }
+
         }
 
         private void FixedUpdate()
