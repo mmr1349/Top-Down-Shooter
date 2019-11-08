@@ -18,4 +18,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 979bd10cd621ba847b128495c7b45aa8, type: 3}
   cost: 50
   stackable: 1
-  prefab: {fileID: 0}
+  prefab: {fileID: 3129008839839108240, guid: 7e032069c98cda34280a9ca2cbf790e8, type: 3}
