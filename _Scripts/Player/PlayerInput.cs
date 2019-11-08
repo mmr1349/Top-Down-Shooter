@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
+using Events.CustomEvents;
 using Events.EventObjects;
 using UnityEngine;
 using Weapons;
@@ -10,7 +11,7 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        [SerializeField] private VoidEventObject startInteraction;
+        [SerializeField] private Vector3EventObject startInteraction;
 
         private Movement movement;
         private Camera main;
@@ -51,17 +52,30 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
-
-            if (Input.GetMouseButtonDown(0))
+            if (allowMovement)
             {
-                itemManager.currentyEquipped().Use();
-            }
 
+<<<<<<< HEAD
             if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
                 itemManager.EnableEquippableUp();
             }
             else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
                 itemManager.EnableEquippableDown();
+=======
+                if (Input.GetMouseButtonDown(0))
+                {
+                    itemManager.currentyEquipped().Use();
+                }
+
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+                {
+                    itemManager.EnableUsableUp();
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+                {
+                    itemManager.EnableUsableDown();
+                }
+>>>>>>> master
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)
@@ -69,7 +83,7 @@ namespace Player
                 allowMovement = !allowMovement;
                 if (!allowMovement)
                 {
-                    startInteraction.Raise();
+                    startInteraction.Raise(transform.position);
                 }
 
             }
