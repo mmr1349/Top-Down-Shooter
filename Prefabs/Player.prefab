@@ -18,10 +18,7 @@ GameObject:
   - component: {fileID: 8159705858204862096}
   - component: {fileID: 3018731686982865911}
   - component: {fileID: 2228898937157486825}
-<<<<<<< HEAD
   - component: {fileID: 18386762}
-=======
->>>>>>> parent of 16b360c... Finally got the inventory working!!!
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -42,10 +39,6 @@ Transform:
   m_Children:
   - {fileID: 1426625280}
   - {fileID: 3145280685795716306}
-<<<<<<< HEAD
-  - {fileID: 8805099242286199409}
-=======
->>>>>>> parent of 16b360c... Finally got the inventory working!!!
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,10 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList: []
   currentIndex: 0
-<<<<<<< HEAD
-  weaponSpawnLocation: {fileID: 0}
-=======
->>>>>>> parent of 16b360c... Finally got the inventory working!!!
 --- !u!114 &8159705858204862099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069d3404d61e327499eeb9e7a940482d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startInteraction: {fileID: 11400000, guid: 9f4465e12bf674a0d8f0b743c1348839, type: 2}
 --- !u!114 &3018731686982865911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,10 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-<<<<<<< HEAD
   jumpHeight: 10
-=======
->>>>>>> parent of 16b360c... Finally got the inventory working!!!
 --- !u!114 &2228898937157486825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +188,6 @@ MonoBehaviour:
   manaAmount: 100
   maxManaAmount: 100
   regenRate: 10
-<<<<<<< HEAD
 --- !u!114 &18386762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,40 +215,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Events.CustomEvents.VoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!1 &8380594230488739069
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8805099242286199409}
-  m_Layer: 0
-  m_Name: Weapon Spawn Location
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8805099242286199409
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8380594230488739069}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8159705858204862110}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of 16b360c... Finally got the inventory working!!!
+    m_TypeName: Events.CustomEvents.VoidEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &446628072090977987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -270,11 +224,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8159705858204862110}
     m_Modifications:
-    - target: {fileID: 446628070665475132, guid: 1b3ec348ed026014695cb0767d43c535,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire Wand
-      objectReference: {fileID: 0}
     - target: {fileID: 446628070665475523, guid: 1b3ec348ed026014695cb0767d43c535,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,6 +279,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 446628070665475132, guid: 1b3ec348ed026014695cb0767d43c535,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Wand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b3ec348ed026014695cb0767d43c535, type: 3}
 --- !u!4 &1426625280 stripped
@@ -345,11 +299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8159705858204862110}
     m_Modifications:
-    - target: {fileID: 8843857248718511615, guid: bc9bd1df6f181b446be169b1cb737522,
-        type: 3}
-      propertyPath: m_Name
-      value: Gun
-      objectReference: {fileID: 0}
     - target: {fileID: 35110862782545787, guid: bc9bd1df6f181b446be169b1cb737522,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -404,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843857248718511615, guid: bc9bd1df6f181b446be169b1cb737522,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc9bd1df6f181b446be169b1cb737522, type: 3}
