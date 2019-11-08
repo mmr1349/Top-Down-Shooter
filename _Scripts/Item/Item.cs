@@ -10,7 +10,7 @@ namespace Items
         }
 
         private void Awake() {
-            data.prefab = this.gameObject;
+            //data.prefab = this.gameObject;
         }
     }
 }

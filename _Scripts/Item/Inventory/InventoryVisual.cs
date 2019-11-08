@@ -18,8 +18,13 @@ public class InventoryVisual : MonoBehaviour {
 
     private void Start() {
         equippedItems = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItemManager>();
+        inventory.ourInventoryChanged += displayItemsFromInventory;
         createInventoryGrid();
         displayItemsFromInventory();
+    }
+
+    private void FixedUpdate() {
+        //displayItemsFromInventory();
     }
 
     private void createInventoryGrid() {
@@ -33,8 +38,11 @@ public class InventoryVisual : MonoBehaviour {
     }
 
     public void putItemIntoHotBar(ItemScriptableObject item) {
+        Debug.Log("Freaking work " + item);
+        Debug.Log("Item " + item.itemName + " made it to visual.");
         if (item.itemType == ItemTypeEnum.USABLE) {
-            //equippedItems.transferItemFromInventory(item);
+            Debug.Log("Trying to equip usable item: " + item.itemName);
+            equippedItems.transferItemFromInventory(item);
             displayItemsFromInventory();
         } else {
             Debug.Log("This item is not equippable " + item.name);
@@ -49,15 +57,10 @@ public class InventoryVisual : MonoBehaviour {
                 if (count >= items.Count) {
                     inventoryPositions[c, r].removeItem();
                 } else {
-                    inventoryPositions[c, r].setItem(items[count]);
+                    inventoryPositions[c, r].setItem(items[count], inventory.getItemAmount(items[count]));
                     count++;
                 }
             }
         }
-        /*for (int i = 0; i < items.Count; i++) {
-            int whatRow = i % rows;
-            int whatColumn = i % columns;
-            inventoryPositions[whatColumn, whatRow].itemImage.sprite = items[i].getSprite();
-        }*/
     }
 }
