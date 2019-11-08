@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Events.EventObjects;
+﻿using Events.EventObjects;
 using Interactions;
 using Interactions.Reactions;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Object = System.Object;
 
 namespace UI
 {
     
-    public class TextManager : MonoBehaviour
+    public class ReactionManager : MonoBehaviour
     {
-        private static TextManager instance;
+        private static ReactionManager instance;
         [SerializeField] private GameObject reactionDisplayArea;
         [SerializeField] private VoidEventObject allowMovement;
         private bool currentlyInteracting;
@@ -45,7 +40,7 @@ namespace UI
         {
             
             if(currentlyInteracting)
-            {//TODO need to add type checking so that it only responds to the right ones
+            {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (!currentReaction.NextStep())

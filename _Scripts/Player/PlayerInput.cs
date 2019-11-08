@@ -52,16 +52,19 @@ namespace Player
             }*/
 
 
-            if (Input.GetMouseButtonDown(0))
+            if (allowMovement)
             {
-                itemManager.currentyEquipped().Use();
-            }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    itemManager.currentyEquipped().Use();
+                }
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-                itemManager.EnableEquippableUp();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
-                itemManager.EnableEquippableDown();
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                    itemManager.EnableEquippableUp();
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                    itemManager.EnableEquippableDown();
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.F) && canInteract)
