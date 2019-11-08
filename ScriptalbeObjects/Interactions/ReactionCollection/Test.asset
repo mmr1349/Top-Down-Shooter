@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519eca85249dd45008556a186fee4d38, type: 3}
+  m_Script: {fileID: 11500000, guid: f4bc4c79528144b7b9f4808c851abdb9, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  hasBeenPlayed: 0
-  sentences:
-  - Hi
-  - Test
+  reactions:
+  - {fileID: 11400000, guid: cbbf13c1e60c04a5bacac67573fbf1d2, type: 2}

@@ -10,7 +10,7 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        [SerializeField] private VoidEventObject startInteraction;
+        [SerializeField] private Vector3EventObject startInteraction;
 
         private Movement movement;
         private Camera main;
@@ -69,7 +69,7 @@ namespace Player
                 allowMovement = !allowMovement;
                 if (!allowMovement)
                 {
-                    startInteraction.Raise();
+                    startInteraction.Raise(transform.position);
                 }
 
             }
