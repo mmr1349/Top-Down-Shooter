@@ -10,18 +10,23 @@ using Player;
 using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
-
+namespace Interactions{
 /**
- * Requires that the game object attached has a secondary trigger collider,
- * will not interfere with other collision detection
+ * In order for interactions to work, the game object must have a Vector3 event listener that listens for a start interaction call
+ * When an interaction attempt is made, it will check the current ConditionCollection. If that passes, then it will send the attached reactioncollection
+ * to the proper listeners.
+ *
+ * The conditions are scriptalbe objects that can have their satisfied value set by any action. Just need to make sure that they are notified by it.
  */
-[RequireComponent(typeof(VoidEventListener))]
+
+[RequireComponent(typeof(Vector3EventListener))]
 public class Interactable : MonoBehaviour
 {
     private bool canInteract = false;
     [SerializeField] private ConditionCollection[] conditionCollections;
     [SerializeField] private ReactionEventObject reactionEventObject;
     [SerializeField] private ReactionCollection defaultReaction;
+    [SerializeField] private VoidEventObject allowMovement;
     private int currentConditionIndex = 0;
     
     // Start is called before the first frame update
@@ -49,27 +54,42 @@ public class Interactable : MonoBehaviour
 //            Debug.Log($"Heard Condition {condition.description}");
 //        }
 //    }
-    public void StartInteraction()
+    public void StartInteraction(Vector3 location)
     {
+        var distance = Vector3.Distance(location, transform.position);
+        if (distance > 2) return;
+
         if (currentConditionIndex >= conditionCollections.Length)
         {
-            reactionEventObject.Raise(defaultReaction);
+            Debug.Log("Playing Default Reaction");
+            PlayDefaultReaction();
         }
         else
         {
             if (conditionCollections[currentConditionIndex].CheckSatisfied())
             {
                 reactionEventObject.Raise(conditionCollections[currentConditionIndex].GetReactionCollection());
+                currentConditionIndex++;
             }
             else
             {
-                reactionEventObject.Raise(defaultReaction);
+                PlayDefaultReaction();
+                Debug.Log("Playing Default Reaction");
             }
         }
         
-        Debug.Log("Looking for interaction text");
-        
-        
+    }
+
+    private void PlayDefaultReaction()
+    {
+        if (defaultReaction != null)
+        {
+            reactionEventObject.Raise(defaultReaction);
+        }
+        else
+        {
+            allowMovement.Raise();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -93,4 +113,5 @@ public class Interactable : MonoBehaviour
 
     //public abstract Reaction startReaction();
 
+}
 }

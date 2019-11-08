@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Interactions
 {
-    public class ReactionCollection : MonoBehaviour
+    [CreateAssetMenu(menuName = "ScriptableObjects/Reaction Collection",fileName = "New Reaction Collection")]
+    public class ReactionCollection : ScriptableObject
     {
         [SerializeField] private Reaction[] reactions;
         private int index = 0;
