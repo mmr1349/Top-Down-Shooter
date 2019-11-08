@@ -5,10 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using Character;
 
-namespace UI
-{
-    
-    public class PlayerUIController : MonoBehaviour {
+namespace UI {
+    public class PlayerUIController : MonoBehaviour
+    {
         [SerializeField] private Slider healthBar;
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private Slider manaBar;
@@ -26,23 +25,13 @@ namespace UI
             itemManager = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItemManager>();
         }
 
-<<<<<<< HEAD
-    // Update is called once per frame
-    void Update() {
-        healthBar.value = playerHealth.GetHealth() / playerHealth.GetMaxHealth();
-        healthText.text = Mathf.Round(playerHealth.GetHealth()).ToString();
-        manaBar.value = playerMana.getManaAmount() / playerMana.getMaxManaAmount();
-        manaText.text = Mathf.Round(playerMana.getManaAmount()).ToString();
-        itemSprite.sprite = itemManager.currentyEquipped().getScripatbleObject().sprite;
-=======
         // Update is called once per frame
         void Update() {
             healthBar.value = playerHealth.GetHealth() / playerHealth.GetMaxHealth();
             healthText.text = Mathf.Round(playerHealth.GetHealth()).ToString();
             manaBar.value = playerMana.getManaAmount() / playerMana.getMaxManaAmount();
             manaText.text = Mathf.Round(playerMana.getManaAmount()).ToString();
-            itemSprite.sprite = itemManager.currentyEquipped().getSprite();
+            itemSprite.sprite = itemManager.currentyEquipped().getScripatbleObject().sprite;
         }
->>>>>>> master
     }
 }

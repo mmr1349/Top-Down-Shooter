@@ -9,8 +9,7 @@ using Weapons;
 
 namespace Player
 {
-    public class PlayerInput : MonoBehaviour
-    {
+    public class PlayerInput : MonoBehaviour {
         [SerializeField] private Vector3EventObject startInteraction;
 
         private Movement movement;
@@ -33,14 +32,12 @@ namespace Player
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update() {
             RaycastHit hit;
             Ray mouseRay = main.ScreenPointToRay(Input.mousePosition);
             float enter;
             //For plane casting
-            if (raycastPlane.Raycast(mouseRay, out enter))
-            {
+            if (raycastPlane.Raycast(mouseRay, out enter)) {
                 Vector3 hitPoint = mouseRay.GetPoint(enter);
                 movement.LookPosition(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
             }
@@ -52,46 +49,39 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
-            if (allowMovement)
-            {
+            if (allowMovement) {
 
-<<<<<<< HEAD
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
-                itemManager.EnableEquippableUp();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
-                itemManager.EnableEquippableDown();
-=======
-                if (Input.GetMouseButtonDown(0))
-                {
-                    itemManager.currentyEquipped().Use();
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                    itemManager.EnableEquippableUp();
+                }
+                else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                    itemManager.EnableEquippableDown();
+
+                    if (Input.GetMouseButtonDown(0)) {
+                        itemManager.currentyEquipped().Use();
+                    }
+
+                    if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                        itemManager.EnableEquippableUp();
+                    }
+                    else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                        itemManager.EnableEquippableDown();
+                    }
                 }
 
-                if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-                {
-                    itemManager.EnableUsableUp();
-                }
-                else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-                {
-                    itemManager.EnableUsableDown();
-                }
->>>>>>> master
-            }
+                if (Input.GetKeyDown(KeyCode.F) && canInteract) {
+                    allowMovement = !allowMovement;
+                    if (!allowMovement) {
+                        startInteraction.Raise(transform.position);
+                    }
 
-            if (Input.GetKeyDown(KeyCode.F) && canInteract)
-            {
-                allowMovement = !allowMovement;
-                if (!allowMovement)
-                {
-                    startInteraction.Raise(transform.position);
+                }
+
+                if (Input.GetKeyDown(KeyCode.I)) {
+                    inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
                 }
 
             }
-
-            if (Input.GetKeyDown(KeyCode.I)) {
-                inventoryVisual.gameObject.SetActive(!inventoryVisual.gameObject.activeSelf);
-            }
-
         }
 
         private void FixedUpdate()
