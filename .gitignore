@@ -11,7 +11,6 @@ sysinfo.txt
 /Assets/AssetStoreTools*
 *.apk
 *.unitypackage
-TextMesh*Pro/
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -44,4 +43,3 @@ ehthumbs.db
 [Dd]esktop.ini
 Corridor/Library/ShaderCache/
 Corridor/Library/metadata/
-TextMesh Pro/

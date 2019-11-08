@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Interactions
 {
-    [CreateAssetMenu(fileName = "New Condition Collection", menuName = "ScriptableObjects/Condition Collection")]
     public class ConditionCollection : ScriptableObject
     {
         [SerializeField] private Condition[] conditions;

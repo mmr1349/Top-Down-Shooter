@@ -2,15 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
-using Events.CustomEvents;
 using Events.EventObjects;
 using UnityEngine;
 using Weapons;
 
 namespace Player
 {
+<<<<<<< HEAD
     public class PlayerInput : MonoBehaviour {
         [SerializeField] private Vector3EventObject startInteraction;
+=======
+    public class PlayerInput : MonoBehaviour
+    {
+        [SerializeField] private VoidEventObject startInteraction;
+>>>>>>> parent of eef2333... Merging
 
         private Movement movement;
         private Camera main;
@@ -49,6 +54,7 @@ namespace Player
                 mousePosition.transform.position = hit.point;
             }*/
 
+<<<<<<< HEAD
             if (allowMovement) {
 
                 if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
@@ -75,6 +81,27 @@ namespace Player
                         startInteraction.Raise(transform.position);
                     }
 
+=======
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                itemManager.currentyEquipped().Use();
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) {
+                itemManager.EnableEquippableUp();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) {
+                itemManager.EnableEquippableDown();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && canInteract)
+            {
+                allowMovement = !allowMovement;
+                if (!allowMovement)
+                {
+                    startInteraction.Raise();
+>>>>>>> parent of eef2333... Merging
                 }
 
                 if (Input.GetKeyDown(KeyCode.I)) {

@@ -12,20 +12,16 @@ using UnityEngine;
 
 
 /**
- * In order for interactions to work, the game object must have a void event listener that listens for a start interaction call
- * When an interaction attempt is made, it will check the current ConditionCollection. If that passes, then it will send the attached reactioncollection
- * to the proper listeners.
- *
- * The conditions are scriptalbe objects that can have their satisfied value set by any action. Just need to make sure that they are notified by it.
+ * Requires that the game object attached has a secondary trigger collider,
+ * will not interfere with other collision detection
  */
-[RequireComponent(typeof(Vector3EventListener))]
+[RequireComponent(typeof(VoidEventListener))]
 public class Interactable : MonoBehaviour
 {
     private bool canInteract = false;
     [SerializeField] private ConditionCollection[] conditionCollections;
     [SerializeField] private ReactionEventObject reactionEventObject;
     [SerializeField] private ReactionCollection defaultReaction;
-    [SerializeField] private VoidEventObject allowMovement;
     private int currentConditionIndex = 0;
     
     // Start is called before the first frame update
@@ -53,50 +49,28 @@ public class Interactable : MonoBehaviour
 //            Debug.Log($"Heard Condition {condition.description}");
 //        }
 //    }
-
-//TODO needs to listen to make sure the player is talking to it
-    public void StartInteraction(Vector3 location)
+    public void StartInteraction()
     {
-        var distance = Vector3.Distance(location, transform.position);
-        if (distance > 2) return;
         if (currentConditionIndex >= conditionCollections.Length)
         {
-            Debug.Log("Playing Default Reaction");
-            PlayDefaultReaction();
-            
+            reactionEventObject.Raise(defaultReaction);
         }
         else
         {
             if (conditionCollections[currentConditionIndex].CheckSatisfied())
             {
                 reactionEventObject.Raise(conditionCollections[currentConditionIndex].GetReactionCollection());
-                currentConditionIndex++;
             }
             else
             {
-                PlayDefaultReaction();
-                Debug.Log("Playing Default Reaction");
+                reactionEventObject.Raise(defaultReaction);
             }
         }
-
-
-
-
-
+        
+        Debug.Log("Looking for interaction text");
+        
+        
     }
-
-    private void PlayDefaultReaction()
-    {
-        if (defaultReaction != null)
-        {
-            reactionEventObject.Raise(defaultReaction);
-        }
-        else
-        {
-            allowMovement.Raise();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerInput>())

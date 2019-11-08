@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Interactions
 {
     [CreateAssetMenu(fileName = "New String Condition Reaction",menuName = "ScriptableObjects/Condition String Reaction Group")]
-   
     public class ConditionStringReactionGroup : ScriptableObject
     {
         [SerializeField] private Condition condition;
