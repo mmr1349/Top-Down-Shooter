@@ -19,12 +19,15 @@ namespace Interactions
         public Reaction GetNextReaction()
         {
             var toReturn = reactions[index];
+            
             index++;
             return toReturn;
         }
 
         public void Init()
         {
+            
+            index = 0;
             foreach (var reaction in reactions)
             {
                 reaction.Init();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Events.CustomEvents;
+using Events.EventObjects;
 using Interactions.Options;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Interactions.Reactions
     {
         [SerializeField] private Option[] options;
         [SerializeField] private GameObject optionGameObject;
+        [SerializeField] private VoidEventObject optionChoosen;
         protected override void SpecificInit()
         {
             
@@ -27,6 +29,7 @@ namespace Interactions.Reactions
                 buttonInstance.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     option.GetEventToCall().Raise(new Void());
+                    optionChoosen.Raise(new Void());
                 });
             }
         }

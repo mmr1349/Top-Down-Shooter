@@ -43,28 +43,31 @@ namespace UI
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (!currentReaction.NextStep())
-                    {
-                        if (!currentReactionCollection.TryNextReaction())
-                        {
-                            Debug.Log("Free to go");
-                            currentReaction = null;
-                            currentReactionCollection = null;
-                            currentlyInteracting = false;
-                            reactionDisplayArea.gameObject.SetActive(false);
-                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
-                            allowMovement.Raise();
-                        }
-                        else
-                        {
-                            currentReaction = currentReactionCollection.GetNextReaction();
-                            Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
-                            var reactionInstance = Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
-                            currentReaction.React(reactionInstance);
+                    ContinueReaction();
+                }
+            }
+        }
 
-                        }    
-                    }
-                    
+        public void ContinueReaction()
+        {
+            if (!currentReaction.NextStep())
+            {
+                if (!currentReactionCollection.TryNextReaction())
+                {
+                    Debug.Log("Free to go");
+                    currentReaction = null;
+                    currentReactionCollection = null;
+                    currentlyInteracting = false;
+                    reactionDisplayArea.gameObject.SetActive(false);
+                    Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
+                    allowMovement.Raise();
+                }
+                else
+                {
+                    currentReaction = currentReactionCollection.GetNextReaction();
+                    Destroy(reactionDisplayArea.transform.GetChild(0).gameObject);
+                    var reactionInstance = Instantiate(currentReaction.getReactionObject(), reactionDisplayArea.transform);
+                    currentReaction.React(reactionInstance);
                 }
             }
         }

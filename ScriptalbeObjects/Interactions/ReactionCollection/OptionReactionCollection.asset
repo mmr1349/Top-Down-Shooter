@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bc4c79528144b7b9f4808c851abdb9, type: 3}
   m_Name: OptionReactionCollection
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 11400000, guid: 3ff5f70365e364cee8216515308d8a04, type: 2}

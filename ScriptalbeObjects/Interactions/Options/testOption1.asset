@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471d4a4d664148efbadf8cdbb0394e28, type: 3}
   m_Name: testOption1
   m_EditorClassIdentifier: 
-  title: 
+  eventToCall: {fileID: 11400000, guid: 6c7518dc6ceab425c876777e3de5379c, type: 2}
+  title: Test1

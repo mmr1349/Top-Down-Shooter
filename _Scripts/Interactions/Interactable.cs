@@ -36,24 +36,14 @@ public class Interactable : MonoBehaviour
         {
             conditionCollection.Init();
         }
-        
-        //TODO replace string with reaction type
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (defaultReaction != null)
+            defaultReaction.Init();
         
     }
 
-//    public void CheckInteraction(Condition conditionInput)
-//    {
-//        if (conditionInput.satasfied)
-//        {
-//            
-//            Debug.Log($"Heard Condition {condition.description}");
-//        }
-//    }
+    
+
     public void StartInteraction(Vector3 location)
     {
         var distance = Vector3.Distance(location, transform.position);

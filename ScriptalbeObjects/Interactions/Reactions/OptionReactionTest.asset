@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bad162216adc44f328b5d7b0760733d9, type: 3}
-  m_Name: New option Reaction
+  m_Name: OptionReactionTest
   m_EditorClassIdentifier: 
   hasBeenPlayed: 0
-  reactionObject: {fileID: 0}
-  options: []
-  optionGameObject: {fileID: 0}
+  reactionObject: {fileID: 1161288537437595131, guid: e196c6996e8c64ffb9a0ec51c30433ae,
+    type: 3}
+  options:
+  - {fileID: 11400000, guid: 377e1c2331ba542c984084c97dd03d65, type: 2}
+  - {fileID: 11400000, guid: b68024f61092041fca45a7c6375bc852, type: 2}
+  optionGameObject: {fileID: 1358337669662403586, guid: 2e90e28a0e182488aa645581bf49c350,
+    type: 3}
+  optionChoosen: {fileID: 11400000, guid: 999211f31e2ac40c59069cd64c8b89db, type: 2}
